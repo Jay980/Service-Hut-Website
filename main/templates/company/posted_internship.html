@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Truelysell | Template</title>
+    <link rel="stylesheet" href="{% static 'adminasset/assets/img/favicon.png'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/bootstrap/css/bootstrap.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/fontawesome/css/fontawesome.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/fontawesome/css/all.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/css/animate.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/css/admin.css'  %}">
+
+    
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo logo-small">
+                    <img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fas fa-align-left"></i>
+            </a>
+            <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                <i class="fas fa-align-left"></i>
+            </a>
+           
+        </div>
+
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo-icon.png" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li >
+                            <a href="/company_profile"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+                        </li>
+                   
+                       
+                        <li class="active">
+                            <a href="/service_posted"><i class="fas fa-bullhorn"></i> <span>Posted Services</span></a>
+                        </li>
+                       
+                        <li>
+                            <a href="/post_service"><i class="fas fa-bullhorn"></i> <span> Post Services</span></a>
+                        </li>
+                       
+                          
+                        <li>
+                            <a href="/profile/edit_company"><i class="fas fa-bullhorn"></i> <span> Edit Profile</span></a>
+                        </li>
+                       
+                      
+                      
+                     
+                        <li>
+                            <a href="/logout"><i class="fas fa-bullhorn"></i> <span> Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+          <div class="content container-fluid">
+            <div class="page-header">
+              <div class="row">
+                  <div class="col">
+                      <h3 class="page-title">Posted Services</h3>
+                  </div>
+                  <div class="col-auto text-end">
+                      <a class="btn btn-white filter-btn me-3" href="javascript:void(0);" id="filter_search">
+                          <i class="fas fa-filter"></i>
+                      </a>
+                      <a href="add-subcategory.html" class="btn btn-primary add-button ml-3">
+                          <i class="fas fa-plus"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Sub Category</th>
+                                        <th>Category</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  {% for product in internships %}
+                                  <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <img class="rounded service-img me-1"
+                                            src="{% static 'adminasset/assets/img/sub-category/sub-category-01.jpg' %}" alt="">{{product.role}}
+                                    </td>
+                                    <td>{{product.category}} </td>
+                                    <td class="text-end">
+                                        <a href="/edit_internship/{{product.id}}"
+                                            class="btn btn-sm bg-success-light me-2">
+                                            <i class="far "></i>Edit 
+                                        </a>
+                                        <a href="/delete_internship/{{product.id}}/"
+                                            class="btn btn-sm bg-danger me-2">
+                                           <i class="far " style="background-color: rgb(186, 54, 54);"></i>Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          </div>
+      </div>
+    <script src="{% static 'adminasset/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/js/admin.js' %}"></script>
+
+</body>
+
+</html>

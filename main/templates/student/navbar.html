@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/css/feather.css" rel="stylesheet" type="text/css">
+
+
+    <link rel="stylesheet" href="{% static 'asset1/css/bootstrap-grid.css'  %}">
+    <link rel="stylesheet" href="{% static 'asset1/css/icons.css'  %}">
+    <link rel="stylesheet" href="{% static 'asset1/css/style.css'  %}">
+    <title>Document</title>
+</head>
+<body>
+    <header id="utf-header-container-block"> 
+        <div id="header">
+          <div class="container"> 
+            <div class="utf-left-side"> 
+              <div id="logo"> <a href="index-1.html"><img src="{% static 'asset1/images/logoimage.png' %}" alt=""></a> </div>
+              <nav id="navigation">
+                <ul id="responsive">
+                  <li><a href="index-1.html#" class="current ">Home </a>
+                   
+                  </li>
+                  <li class=""><a href="index-1.html#">Find Jobs  </a>
+              
+                  </li>
+                  <li><a href="index-1.html#">User Panel</a>
+                    <ul class="dropdown-nav">
+                      <li><a href="dashboard.html"><i class="icon-feather-chevron-right"></i> Dashboard</a></li>
+                      <li><a href="dashboard-jobs-post.html"><i class="icon-feather-chevron-right"></i> Manage Jobs Post</a></li> 
+                      <li><a href="dashboard-manage-jobs.html"><i class="icon-feather-chevron-right"></i> Manage Jobs</a></li>
+                      <li><a href="dashboard-manage-resume.html"><i class="icon-feather-chevron-right"></i> Manage Resume</a></li>
+                      <li><a href="dashboard-bookmarks.html"><i class="icon-feather-chevron-right"></i> Bookmarks Jobs</a></li>
+                      <li><a href="http://jobword.utouchdesign.com/jobword_ltr/dashboard-manage-tasks.html"><i class="icon-feather-chevron-right"></i> Freelancer Tasks</a>
+                        <ul class="dropdown-nav">
+                          <li><a href="dashboard-freelancer-manage-tasks-list.html"><i class="icon-feather-chevron-right"></i> Freelancer Manage Tasks</a></li>
+                          <li><a href="dashboard-manage-bidders-list.html"><i class="icon-feather-chevron-right"></i> Freelancer Manage Bidders</a></li>
+                          <li><a href="dashboard-freelancer-active-bids.html"><i class="icon-feather-chevron-right"></i> Freelancer Active Bids</a></li>
+                          <li><a href="dashboard-freelancer-add-post-bids.html"><i class="icon-feather-chevron-right"></i> Freelancer Post Bids</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="dashboard-reviews.html"><i class="icon-feather-chevron-right"></i> Reviews</a></li>
+                      <li><a href="dashboard-my-profile.html"><i class="icon-feather-chevron-right"></i> My Profile</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="index-1.html#">Pages</a>
+                    <ul class="dropdown-nav">
+                      <li><a href="about-us.html"><i class="icon-feather-chevron-right"></i> About Us</a></li>	
+                      <li><a href="login.html"><i class="icon-feather-chevron-right"></i> Login</a></li>
+                      <li><a href="register.html"><i class="icon-feather-chevron-right"></i> Sign Up</a></li>
+                      <li><a href="checkout-page.html"><i class="icon-feather-chevron-right"></i> Order Checkout</a></li>
+                      <li><a href="order-confirmation.html"><i class="icon-feather-chevron-right"></i> Order Confirmation</a></li>
+                      <li><a href="invoice-template.html"><i class="icon-feather-chevron-right"></i> Invoice Template</a></li>
+                      <li><a href="user-elements.html"><i class="icon-feather-chevron-right"></i> User Elements</a></li>
+                      <li><a href="icons-cheatsheet.html"><i class="icon-feather-chevron-right"></i> Icons Cheatsheet</a></li>
+                      <li><a href="faq-page.html"><i class="icon-feather-chevron-right"></i> FAQ Page</a></li>	
+                      <li><a href="pages-404.html"><i class="icon-feather-chevron-right"></i> 404 Page</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="index-1.html#">Blog</a>
+                    <ul class="dropdown-nav">
+                      <li><a href="blog-right-sidebar.html"><i class="icon-feather-chevron-right"></i> Blog List Right Sidebar</a></li>
+                      <li><a href="blog-left-sidebar.html"><i class="icon-feather-chevron-right"></i> Blog List Left Sidebar</a></li>
+                      <li><a href="blog-post-right-sidebar.html"><i class="icon-feather-chevron-right"></i> Blog Detail Right Sidebar</a></li>
+                      <li><a href="blog-post-left-sidebar.html"><i class="icon-feather-chevron-right"></i> Blog Detail Left Sidebar</a></li>                  
+                    </ul>
+                  </li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </nav>
+              <div class="clearfix"></div>                    
+            </div>
+            
+            <div class="utf-right-side"> 
+              <div class="utf-header-widget-item"> <a href="index-1.html#utf-signin-dialog-block" class="popup-with-zoom-anim log-in-button"><i class="icon-feather-log-in"></i> <span>Sign In</span></a> </div>	
+              <div class="utf-header-widget-item"> 
+                <div class="utf-header-notifications user-menu">
+                  <div class="utf-header-notifications-trigger user-profile-title"> 
+                    <a href="index-1.html#">
+                        <div class="user-avatar status-online"><img src="images/user_small_1.jpg" alt=""> </div>	
+                        <div class="user-name">{{request.user}}</div>	
+                    </a> 
+                  </div>
+                  <div class="utf-header-notifications-dropdown-block"> 
+                    <ul class="utf-user-menu-dropdown-nav">
+                      <li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+                      <li><a href="dashboard-jobs-post.html"><i class="icon-line-awesome-user-secret"></i> Manage Jobs Post</a></li>
+                      <li><a href="dashboard-manage-jobs.html"><i class="icon-material-outline-group"></i> Manage Jobs</a></li>
+                      <li><a href="dashboard-bookmarks.html"><i class="icon-material-outline-star-border"></i> Bookmarks Jobs</a></li>
+                      <li><a href="dashboard-my-profile.html"><i class="icon-feather-user"></i> My Profile</a></li>
+                      <li><a href="index-1.html"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <span class="mmenu-trigger">
+                <button class="hamburger utf-hamburger-collapse-item" type="button"> <span class="utf-hamburger-box-item"> <span class="utf-hamburger-inner-item"></span> </span> </button>
+              </span> 
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+
+    </header>
+        <div class="clearfix"></div>
+</body>
+</html>
+<script src="{%  static 'https://use.fontawesome.com/6e15d9bdff.js'  %}"></script>
+
+ 
+   <script src="{% static 'asset1/js/custom_jquery.js' %}"></script> 
+   <script src="{% static 'asset1/js/typed.js' %}"></script> 
+   <script src="{% static 'asset1/js/slick.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/magnific-popup.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/counterup.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/clipboard.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/snackbar.js' %}"></script> 
+   <script src="{% static 'asset1/js/bootstrap-select.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/bootstrap-slider.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/simplebar.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/tippy.all.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/mmenu.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/jquery-migrate-3.0.0.min.js' %}"></script> 
+   <script src="{% static 'asset1/js/jquery-3.3.1.min.js' %}"></script> 
+
+
+   {% block content %}
+{% endblock %}

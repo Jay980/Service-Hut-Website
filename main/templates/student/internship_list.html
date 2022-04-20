@@ -1,0 +1,531 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Truelysell | Template</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+ 
+</head>
+
+<body class="body-three">
+
+    <div class="page-loading">
+        <div class="preloader-inner">
+            <div class="preloader-square-swapping">
+                <div class="cssload-square-part cssload-square-green"></div>
+                <div class="cssload-square-part cssload-square-pink"></div>
+                <div class="cssload-square-blend"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+
+        <header class="header header-three">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index.html" class="navbar-brand logo">
+                        <img src="assets/img/logo-three.png" class="img-fluid" alt="Logo">
+                    </a>
+                    <a href="index.html" class="navbar-brand logo-small">
+                        <!-- <img src="assets/img/logo-icon-2.png" class="img-fluid" alt="Logo"> -->
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index.html" class="menu-logo">
+                            <img src="{% static 'asset2/img/logo-three.png' %}" alt="">
+                            <img src="" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i
+                                class="fas fa-times"></i></a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active has-submenu">
+                            <a href="http://127.0.0.1:8000/">Home </a>
+                            
+                        </li>
+                        <li>
+                            <a href="/all_services">Services</a>
+                        </li>
+                        <li>
+                            {% if user.is_authenticated %}            <!--When the user is logged in-->
+                            {% else %}
+                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#provider-register">Become a Professional</a>
+                            </li>
+                            <li>
+                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#user-register">Become a User</a>
+                            </li> 
+                            {% endif %}
+                       
+                    </ul>
+                </div>
+         
+
+                <ul class="nav header-navbar-rht" style="margin-right: 10%;">
+             
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}            <!--When the user is logged in-->
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link header-login" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#login_modal">Login</a>
+                            </li>
+                            {% endif %}
+                            {% if user.is_authenticated %}  
+                <ul class="main-nav">
+                    <li class="has-submenu" style="color: black;">
+                            <a href="index-three.html#" style="color: black;">{{request.user.first_name}} <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu" style="color: black;">
+                                <li><a style="color: black;" href="/profile/edit_student/">Edit Profile</a></li>
+                                <li><a style="color: black;" href="/logout">Logout</a></li>
+                                
+                            </ul>
+                        </li>
+                </ul>
+                {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+
+
+
+
+       
+        <div class="breadcrumb-bar">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col">
+                      <div class="breadcrumb-title">
+                          <h2>Find a Professional</h2>
+                      </div>
+                  </div>
+                  <div class="col-auto float-end ms-auto breadcrumb-menu">
+                      <nav aria-label="breadcrumb" class="page-breadcrumb">
+                          <ol class="breadcrumb">
+                              <li class="breadcrumb-item">
+                                  <a href="http://127.0.0.1:8000/">Home</a>
+                              </li>
+                              <li class="breadcrumb-item active" aria-current="page">Find a Professional</li>
+                          </ol>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="content">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-3 theiaStickySidebar">
+                      <div class="card filter-card">
+                          <div class="card-body">
+                              <h4 class="card-title mb-4">Search Filter</h4>
+                              <form id="search_form">
+                                  <div class="filter-widget">
+                                   
+                                      <div class="filter-list">
+                                          <h4 class="filter-title">Categories</h4>
+                                          <select class="form-control form-control selectbox select form-select">
+                                              <option>All Categories</option>
+                                              <option>Computer</option>
+                                              <option selected="">Automobile</option>
+                                              <option>Car Wash</option>
+                                              <option>Cleaning</option>
+                                              <option>Electrical</option>
+                                              <option>Construction</option>
+                                          </select>
+                                      </div>
+                                      <div class="filter-list">
+                                          <h4 class="filter-title">Location</h4>
+                                          <input class="form-control" type="text" placeholder="Search Location">
+                                      </div>
+                                  </div>
+                                  <button class="btn btn-primary pl-5 pr-5 btn-block get_services w-100"
+                                      type="button">Search</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-9">
+                      <div class="row align-items-center mb-4">
+                          <div class="col-md-6 col">
+                              <h4><span>118</span> Services</h4>
+                          </div>
+                          <div class="col-md-6 col-auto">
+                              <div class="view-icons">
+                                  <a href="javascript:void(0);" class="grid-view active"><i
+                                          class="fas fa-th-large"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                      <div>
+                          <div class="row">
+                            {% for j in jobs %}
+
+                              <div class="col-lg-4 col-md-6">
+                                  <div class="service-widget">
+                                      <div class="service-img">
+                                          <a href="/service_detail/{{j.id}}">
+                                              <img class="img-fluid serv-img" alt="Service Image"
+                                                  src="{% static 'adminasset/assets/img/sub-category/sub-category-01.jpg' %}">
+                                          </a>
+                                          <div class="fav-btn">
+                                              <a href="javascript:void(0)" class="fav-icon">
+                                                  <i class="fas fa-heart"></i>
+                                              </a>
+                                          </div>
+                                          <div class="item-info">
+                                              <div class="service-user">
+                                                 
+                                                  <span class="service-price">{{j.charges}} Rs</span>
+                                              </div>
+                                              <div class="cate-list">
+                                                  <a class="bg-yellow" href="/service_detail/{{j.id}}">{{j.category}}</a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="service-content">
+                                          <h3 class="title">
+                                              <a href="/service_detail/{{j.id}}">{{j.category}}</a>
+                                          </h3>
+                                          <div class="rating">
+                                              <i class="fas fa-star filled"></i>
+                                              <i class="fas fa-star filled"></i>
+                                              <i class="fas fa-star filled"></i>
+                                              <i class="fas fa-star filled"></i>
+                                              <i class="fas fa-star"></i>
+                                              <span class="d-inline-block average-rating">(4.3)</span>
+                                          </div>
+                                          <div class="user-info">
+                                              <div class="row">
+                                                  <span class="col-auto ser-contact"><i class="fas fa-phone me-1"></i>
+                                                      <span>xxxxxxxx49</span>
+                                                  </span>
+                                                  <span class="col ser-location">
+                                                      <span>{{j.company.user.name}}</span> 
+                                                  </span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              {% endfor %}
+                             
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <footer class="footer footer-three">
+
+        <div class="footer-top aos" data-aos="fade-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="footer-widget footer-menu">
+                            <div class="footer-logo-sell">
+                                <img src="assets/img/logo-two.png" alt="img">
+                            </div>
+                            <div class="footer-about">
+                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque
+                                    the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis.
+                                    Praesent pharetra, justo ut scel erisque the mattis, </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="footer-widget footer-menu">
+                            <h2 class="footer-title">Service</h2>
+                            <ul>
+                               
+                                    <a href="#"><i class="fas fa-check-double"></i>Plumbing</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="footer-widget footer-contact">
+                            <h2 class="footer-title">Contact </h2>
+                            <div class="footer-contact-info">
+                                <div class="footer-address">
+                                    <span><i class="fa fa-map-marker"></i></span>
+                                    <p>367 Hillcrest Lane, Irvine, California, United States</p>
+                                </div>
+                                <p><i class="fa fa-mobile"></i> 321 546 8764</p>
+                                <p class="mb-0"><i class="fas fa-envelope"></i> <a
+                                        href="https://truelysell-html.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="dda9afa8b8b1a4aeb8b1b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-dots">
+                            <img src="assets/img/foot-dot.png" alt="img">
+                        </div>
+
+                        <div class="footer-widget">
+                            <h2 class="footer-title">Follow Us</h2>
+                            <div class="subscribe-form">
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <a href="#"
+                                    class="btn footer-btn d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-paper-plane"></i>
+                                </a>
+                            </div>
+                            <div class="social-icon">
+                                <ul>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i
+                                                class="fab fa-facebook-f"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i
+                                                class="fab fa-youtube"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i
+                                                class="fab fa-google"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+            <div class="container">
+
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                           
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+
+                            <div class="copyright-menu">
+                                <ul class="policy-menu">
+                                    <li>
+                                        <a href="#">Terms and Conditions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Privacy</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+    </div>
+
+    <div class="modal account-modal fade multi-step" id="provider-register" data-keyboard="false"
+    data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header p-0 border-0">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-header">
+                    <h3>Join as a Provider</h3>
+                </div>
+
+                <form method="POST"  action="{% url 'main:register_as_company' %}"  role="form" enctype="multipart/form-data" class="form-horizontal">
+                    {% csrf_token %}
+          
+                    <div class="form-group col-lg-8">
+                      <label for="id_name">Company Name:</label>
+                      <input class="form-control" type="text" name="name" maxlength="30" autofocus=""  id="id_name">
+                    </div>
+          
+                    <div class="form-group col-lg-8">
+                      <label for="id_email">Email:</label>
+                      <input class="form-control" type="email" name="email" required="" id="id_email">
+                    </div>   
+          
+                    <div class="form-group col-lg-8">
+                      <label for="id_password1">Password:</label>
+                      <input class="form-control" type="password" name="password" required="" id="id_password">
+                    </div>
+          
+                    
+                    <div class="form-group col-lg-8">
+                      <label for="id_password2">Password confirmation:</label>
+                      <input class="form-control" type="password" name="confirm_password" required="" id="id_confirm_password">
+                    </div>
+                    
+          
+                    <div class="form-group col-lg-8">
+                      <button style="background-color:#0356fc; color:white" class="btn btn-outline-info" type="submit">Sign Up</button>
+                    </div>
+                  </form> 
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal account-modal fade multi-step" id="user-register" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header p-0 border-0">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-header">
+                    <h3>Join as a User</h3>
+                </div>
+                <form method="POST" action="{% url 'main:register_as_student' %}" enctype="multipart/form-data" class="form-horizontal" role="form">
+                    {% csrf_token %}
+                      <div class="form-group col-lg-12">
+                          <label for="id_first_name">First name:</label> 
+                          <input class="form-control utf-with-border" type="text" name="first_name" maxlength="30" autofocus="" id="id_first_name">
+                          </div>
+    
+                          <div class="form-group col-lg-12">
+                          <label for="id_last_name">Last name:</label> 
+                          <input class="form-control" type="text" name="last_name" maxlength="150" id="id_last_name">
+                          </div>
+    
+                          <div class="form-group col-lg-12">
+                          <label for="id_email">Email:</label> 
+                          <input class="form-control" type="email" name="email" required="" id="id_email">
+                          </div>
+
+                          <div class="form-group col-lg-12">
+                          <label for="id_password">Password:</label> 
+                          <input class="form-control" type="password" name="password" required="" id="id_password">
+                          </div>
+                          
+                          <div class="form-group col-lg-12">
+                          <label for="id_confirm_password">Password confirmation:</label> 
+                          <input class="form-control" type="password" name="confirm_password" required="" id="id_confirm_password">
+                          </div>
+  
+    
+    
+                          <div class="form-group col-lg-8">
+                          <button style="background-color:#0356fc; color:white" class="btn btn-outline-info" type="submit">Sign Up</button>
+                          </div>
+                          <div class="form-group col-lg-8">
+                          If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+                          </div>
+                      </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal account-modal fade" id="login_modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header p-0 border-0">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-header">
+                    <h3>Login <span>Truelysell</span></h3>
+                </div>
+                                     
+        
+                <form method="POST"  action="{% url 'main:login' %}" class="form-horizontal" id="login-form" role="form">
+                    {% csrf_token %}
+
+                    <div class="form-group form-focus">
+                        <label class="focus-label">Email</label>
+                        <input type="email" class="form-control" name="username" autofocus="" required="" id="id_username" placeholder="Email Address" required/>
+                    </div>
+                    <div class="form-group form-focus">
+                        <label class="focus-label">Password</label>
+                        <input type="password" class="form-control"  name="password" required="" id="id_password" placeholder="Password" required/>
+                    </div>
+                    <div class="text-end">
+                    </div>
+                    <div class="d-grid log-in-three">
+                        <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
+                    </div>
+                    
+                    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/plugins/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="assets/plugins/aos/aos.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+
+<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+
+<script src="{% static 'asset2/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'asset2/js/popper.min.js' %}"></script>
+<script src="{% static 'asset2/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'asset2/plugins/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'asset2/plugins/aos/aos.js' %}"></script>
+<script src="{% static 'asset2/js/script.js' %}"></script>
+
+</html>
+{% endblock content %}

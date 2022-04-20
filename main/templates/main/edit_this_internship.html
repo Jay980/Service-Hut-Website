@@ -1,0 +1,167 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Truelysell | Template</title>
+    <link rel="stylesheet" href="{% static 'adminasset/assets/img/favicon.png'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/bootstrap/css/bootstrap.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/fontawesome/css/fontawesome.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/fontawesome/css/all.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/css/animate.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/css/admin.css'  %}">
+
+    
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo logo-small">
+                    <img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fas fa-align-left"></i>
+            </a>
+            <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                <i class="fas fa-align-left"></i>
+            </a>
+          
+        </div>
+
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo-icon.png" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li >
+                            <a href="/company_profile"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+                        </li>
+                   
+                       
+                        <li >
+                            <a href="/service_posted"><i class="fas fa-bullhorn"></i> <span>Posted Services</span></a>
+                        </li>
+                       
+                        <li class="active">
+                            <a href="/post_service"><i class="fas fa-bullhorn"></i> <span> Post Services</span></a>
+                        </li>
+                       
+                          
+                        <li>
+                            <a href="/profile/edit_company"><i class="fas fa-bullhorn"></i> <span> Edit Profile</span></a>
+                        </li>
+                       
+                      
+                      
+                     
+                        <li>
+                            <a href="/logout"><i class="fas fa-bullhorn"></i> <span> Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+          <div class="content container-fluid">
+              <div class="row">
+                  <div class="col-xl-8 offset-xl-2">
+                   
+                      <div class="page-header">
+                          <div class="row">
+                              <div class="col">
+                                  <h3 class="page-title">Post Service</h3>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="card">
+                          <div class="card-body">
+                     
+                            <form method="POST" class="form-horizontal" role="form">
+                              {% csrf_token %}
+        
+                                  <div class="form-group">
+                                  <label for="id_category" class="col-lg-3 control-label">Category:</label> 
+                                  <div class="col-lg-8">
+                                  <select class="form-control" name="category" id="id_category">
+                                    <option value="{{i.category}}" selected disabled hidden> {{i.category}} </option>
+                                    {% for cat in categories %}
+                                      <option value = "{{cat.id}}">{{cat.category_name}}</option>
+                                    {% endfor %}
+                                  </select class="form-control">  
+                                </div>
+                                </div>
+                          
+                                <div class="form-group">
+                                  <label for="id_role" class="col-lg-3 control-label">Role:</label> 
+                                  <div class="col-lg-8">
+                                    <input class="form-control" type="text" name="role" maxlength="200" required="" id="id_role" value="{{i.role}}">
+                                  </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label for="id_location" class="col-lg-5 control-label">Location:</label> 
+                                  <div class="col-lg-8">
+                                   <select class="form-control" name="location" id="id_location">
+                                    <option value="{{i.location}}" selected disabled hidden>{{i.location}}</option>
+                                    {% for loc in locations %}
+                                      <option value = "{{loc.id}}">{{loc.location_name}}</option>
+                                    {% endfor %}
+                                   </select>
+                                  </div>
+                               </div>
+                               
+                             
+                                
+                                <div class="form-group">
+                                <label for="id_content" class="col-lg-4 control-label">Description:</label>
+                                <div class="col-lg-8">
+                                <textarea class="form-control" name="content" cols="40" rows="10" required="" id="id_content">{{i.content}}
+                                </textarea></div>
+                                </div>
+                          
+                                <div class="form-group">
+                                <label for="id_stipend" class="col-lg-5 control-label">Stipend(in INR):</label> 
+                                <div class="col-lg-8">
+                                    <input class="form-control" type="number" min="0" name="charges" maxlength="200" required="" id="id_stipend" value="{{i.charges}}">
+                                </div></div>
+                               
+                              <div class="form-group">
+                                  <label class="col-md-3 control-label"></label>
+                                  <div class="col-md-8">
+                                    <button style="background-color:#0356fc;  color:white" class="btn btn-outline-info" type="submit">Update</button>
+                                    <a href="/service_posted" style="background-color:red; color:white" class="btn btn-outline-info">Cancel</a>
+                                  </div>
+                                </div>
+                                
+                              </form>
+                           
+
+                          </div>
+                  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <script src="{% static 'adminasset/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/js/admin.js' %}"></script>
+
+</body>
+
+</html>

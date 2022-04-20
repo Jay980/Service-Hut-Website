@@ -1,0 +1,10 @@
+
+{% block content %}
+  <h1>Edit all Service</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ formset.as_p }}
+    <input type="submit" value="save all products">
+    <a href="/Service/list">cancel</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+{% if user.is_normal %}
+<div class="row">
+<h1 style="text-align: left; color: cornflowerblue">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Applications</h1><hr>
+
+<div class="row" style="padding-left: 2%;">
+
+{% for i in application %}
+
+        <!-- <div class="row"> -->
+           <div class="col-sm-4" style="padding-left: 2%;padding-right: 2%; padding-top: 2%;padding-bottom: 2%;"> 
+              <div class="card bg-light mb-4 border-secondary mb-4">
+                  <div class="card-body">
+                  <h1 class="card-title" style="font-family: montserrat">Company : {{i.Service.company.user.name}}</h1> 
+                  <h3 class = "card-title">Category : {{i.Service.category}}</h3>
+                  <h3 class="card-title">Role : {{i.Service.role}}</h3> 
+                  <h3 class="card-title">Location : {{i.Service.location}}</h3>              
+                  {% if i.is_accept %}
+                  <h2 style="color: blue;">Accepted</h2>
+                  {% elif i.is_reject %}
+                  <h2 style="color: red;">Rejected</h2>
+                  {% else %}
+                  <h3>Status: Pending</h3>
+                  {% endif %}
+                  </div>
+            </div>
+        </div>
+        
+
+{% endfor %}
+{% elif user.is_company %}
+<h1 style="text-align: center;color: crimson">XX--You can't access this page--XX</h1>
+<h2 style="text-align:center">Click on <a style="color:crimson" href="/company_profile">this</a> to go to back to company's profile</h2>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,150 @@
+<!--Template to show the Internships posted by the Employer-->
+{% extends 'main/header.html' %}
+{% block content %}
+{% if user.is_normal %}
+
+<h2 style="color: cornflowerblue">&nbsp&nbsp&nbsp&nbspApply for Service</h2><hr>
+
+<div class="col-md-6" style="padding-left: 5%;padding-right: 5%;padding-bottom: 3%;">
+
+    <div class="row">             
+        <div class="card text-white bg-warning" >
+            <div class="card-header">
+                <h1 style="color: purple">{{Service.company}}</h6><hr>
+            <h3 style="color: purple;"><span style="color: black;">Title:</span> {{Service.role}}</h3>
+            <h3 style="color: purple;"><span style="color: black;">Location:</span> {{Service.location}}</h3>
+            <h3 style="color: purple;"><span style="color: black;">:</span> {{Service.}} Months</h3>
+            <h3 style="color: purple;"><span style="color: black;">charges:</span> {{Service.charges|safe}} INR</h3>
+            <h3 style="color: purple;"><span style="color: black;">Details:</span> {{Service.content|safe}}</h3>
+            <h5 style="color: purple;"><span style="color: black;">Date Posted:</span>{{Service.date_published}}</h5>
+            </div>
+        </div>
+    </div>  
+</div>   
+
+<div class="col-md-6" style="padding-left: 5%;">
+    <form method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+        {% csrf_token %}
+
+        <div class="form-group col-lg-8">
+            <label for="id_intern_name">Name:</label> 
+            <input class="form-control" type="text" name="intern_name" maxlength="200" required="" id="id_intern_name" value="{{student.user.first_name}} {{student.user.last_name}}" readonly></p>
+        </div>
+
+        <div class="form-group col-lg-8">
+            <label for="id_email">Email:</label> 
+            <input class="form-control" type="text" name="email" maxlength="200" required="" id="id_email" value="{{student.user.email}}" readonly></p>
+        </div>
+
+        <div class="form-group col-lg-8">
+            <label for="id_phone_no">Phone no: </label>
+            <input class="form-control" type="text" name="phone_no" maxlength="10" placeholder="Enter your 10-digit phone number" id = "id_phone_no" value = "{{student.phone_no}}" required="" id="id_phone_no" readonly></p>
+        </div>
+
+        <div class="form-group col-lg-8">
+            <label for="id_college_name">College:</label> 
+            <input class="form-control" type="text" name="college_name" maxlength="200" required="" id="id_college_name" value="{{student.college_name}}" readonly></p>
+        </div>
+
+        <div class="form-group col-lg-8">
+            <label for="id_basic_skills">Skills:</label> 
+            <input class="form-control" type="text" name="basic_skills" maxlength="200" required="" id="id_basic_skills" value="{{student.basic_skills}}" readonly></p>
+        </div>
+
+        <div class="form-group col-lg-8">
+            <label for="id_resume">Resume (In PDF format):</label>
+            <input class="form-control" type="file" name="resume" accept="application/pdf" id="id_resume"></p>
+        </div>
+
+        <div class="form-group col-lg-8">
+            <label for="id_cover_letter">Cover Letter:</label> 
+            <input class="form-control" type="text" name="cover_letter" maxlength="200" required="" id="id_cover_letter">
+        </div>
+        
+        <div class="form-group col-lg-8">
+            <label for="id_available">Are you available in the given period? :</label> 
+            <input type="checkbox" name="available" id="id_available">
+        </div>
+
+        <div class="form-group col-lg-8">
+        <input type="submit" class="btn btn-primary" style="text-align: center"  value="Apply">
+        <a href="/student_profile/" style="background-color:red; color:white" class="btn btn-outline-info">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+<!-- <div class="row">             
+    <div class="card text-white bg-warning" >
+        <div class="card-header">
+            <h1>{{j.user}}</h1>
+        <h4>{{j.job_title}}</h4>
+        <h4 style="font-size: 80%">{{j.job_published}}</h4>
+        <br>
+        <h4>Location: {{j.location}}</h4>
+        <br>
+        <h4>: {{j.job_duration}}</h4>
+        <h4>charges: {{j.job_stipend|safe}}</h4> 
+        <br>
+        <h4>Details: {{j.job_content|safe}}</h4>
+        <br> -->
+    <!-- <div class="container">
+        <div class="row">
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <p><label for="id_phone_no">Phone no: </label>
+            <input class="form-control" type="text" name="phone_no" maxlength="10" required="" id="id_phone_no"></p>
+        
+        
+            <p><label style="display: none;" for="id_intern_name">Intern name:</label> 
+            <input class="form-control" style="display: none;" type="text" name="intern_name" maxlength="200" required="" id="id_intern_name" value="{{user.first_name}} {{user.last_name}}"></p>
+        
+            
+            <p><label style="display: none;" for="id_company_name">Company name:</label> 
+            <input class="form-control" style="display: none;" type="text" name="company_name" maxlength="100" required="" id="id_company_name" value="{{j.user}}"></p>
+        
+            
+            <p><label style="display: none;" for="id_job_title">Job title:</label> 
+            <input class="form-control" style="display: none;" name="job_title" id="id_job_title" value="{{j.job_title}}"></p>
+        
+            
+            <p><label style="display: none;" for="id_job_id">Job id:</label> 
+            <input class="form-control" style="display: none;" type="text" name="job_id" maxlength="100" required="" id="id_job_id" value="{{j.id}}"></p>
+    
+            
+            <p><label for="id_hire">Why you should be hired?:</label> 
+            <input class="form-control" type="text" name="hire" maxlength="200" required="" id="id_hire"></p>
+        
+    
+            <p><label for="id_available">Are you available in that period:</label> 
+            <input class="form-control" type="text" name="available" maxlength="200" required="" id="id_available"></p>
+         -->
+            
+            <!-- <p><label for="id_document">Upload Resume:</label> 
+            <input class="form-control" type="file" name="document" required="" id="id_document"></p> -->
+        
+                <!-- <p><label style="display: none;" for="id_intern_name">Intern name:</label> <input style="display: none;" type="text" name="intern_name" maxlength="200" required="" id="id_intern_name" value="{{user.username}}"></p>
+                <p><label style="display: none;" for="id_company_name">Company name:</label> <input style="display: none;" type="text" name="company_name" maxlength="100" required="" id="id_company_name" value="{{j.user}}"></p>
+                <p><label style="display: none;" for="id_job_title">job_title:</label> <input style="display: none;" type="text" name="job_title" maxlength="100" required="" id="id_job_title" value="{{j.job_title}}"></p>
+                <p><label style="display: none;" for="id_job_id">Job id:</label> <input style="display: none;" type="text" name="job_id" maxlength="100" required="" id="id_job_id" value="{{j.id}}"></p>
+                <p><label for="id_phone_no">Phone no:</label> <input type="text" name="phone_no" maxlength="10" required="" id="id_phone_no"></p><p><label for="id_hire"> Why should you be hired for this Service?</label> <input type="text" name="hire" maxlength="200" required="" id="id_hire"></p>
+                <p><label for="id_available">Are you available for this month?</label> <input type="text" name="available" maxlength="200" required="" id="id_available"></p>
+                <p><label for="id_document">Resume Upload:</label> <input type="file"  name="document" required="" id="id_document"></p> -->
+                <!-- <input type="submit" class="btn btn-primary" style="margin-top:5%;text-align: center"  value="Apply"> -->
+                <!-- <input  type="submit"  value="apply"> -->
+            <!-- </div>
+        </form>
+        </div>
+            </div>
+    </div>
+</div> -->
+
+{% elif user.is_employer %}
+<h1 style="text-align: center;color: crimson">XX--You can't access this page--XX</h1>
+<h2 style="text-align:center">Click on <a style="color:crimson" href="/employer_profile">this</a> to go to back to employer's profile</h2>
+
+{% endif %}
+
+{% endblock %}

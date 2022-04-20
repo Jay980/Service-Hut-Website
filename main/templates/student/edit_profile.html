@@ -1,0 +1,243 @@
+{% extends 'student/studentbase.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Preloader Start -->
+    
+    <!-- Preloader End -->
+<!-- choose one -->
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">
+<meta name="theme-color" content="#ff8a00">
+<meta name="description" content="Job Portal HTML Template">
+<meta name="keywords" content="Employment, Naukri, Shine, Indeed, Job Posting, Job Provider">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="wrapper"> 
+ 
+     
+      <!-- Header Container / End --> 
+      
+      <!-- Dashboard Container -->
+ 
+        </div>
+        <!-- Dashboard Sidebar / End --> 
+        <header id="utf-header-container-block"> 
+          <div id="header">
+            <div class="container"> 
+              <div class="utf-left-side"> 
+                <div id="logo"> <a href="index-1.html"><img src="{% static 'asset1/images/logoimage.png' %}" alt=""></a> </div>
+                <nav id="navigation">
+                  <ul id="responsive">
+                    <li><a href="index-1.html#" class="current ">Home </a>
+                     
+                    </li>
+                    <li class=""><a href="/all_internships">Internships  </a>
+                
+                
+           
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </nav>
+                <div class="clearfix"></div>                    
+              </div>
+              
+              <div class="utf-right-side"> 
+                {% if user.is_authenticated %}            <!--When the user is logged in-->
+                {% else %}
+                <div class="utf-header-widget-item"> <a href="/register_as_student" class="log-in-button"><span>Sign In</span></a> </div>	
+               <a href="/login"><div class="utf-header-widget-item"> <a href="/login" class=" log-in-button"><?xml version="1.0" encoding="utf-8"?>
+           
+                </svg>
+                 <span>Login</span></a> </div>	</a> 
+                {% endif %}
+                {% if user.is_authenticated %}            <!--When the user is logged in-->
+
+                <div class="utf-header-widget-item"> 
+                  <div class="utf-header-notifications user-menu">
+                    <div class="utf-header-notifications-trigger "> 
+                 
+                      <div class="user-name" style="position: relative; top: 20px; left: 10px;">{{request.user.first_name}}</div>	
+                        
+                      <a href="#">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg fill="#000000" width="20" height="20" version="1.1" id="lni_lni-chevron-down-circle"
+                           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64"
+                           style="enable-background:new 0 0 64 64;" xml:space="preserve">
+                        <g>
+                          <path d="M46.8,25.3L32,35.4L17.2,25.3c-0.8-0.5-1.9-0.3-2.4,0.5c-0.5,0.8-0.3,1.9,0.5,2.4l15.4,10.4C31,38.9,31.5,39,32,39
+                            c0.5,0,1-0.1,1.5-0.4l15.3-10.4c0.8-0.5,1-1.6,0.5-2.4C48.7,24.9,47.6,24.7,46.8,25.3z"/>
+                          <path d="M32,1.3C15,1.3,1.3,15,1.3,32C1.3,49,15,62.8,32,62.8C49,62.8,62.8,49,62.8,32C62.8,15,49,1.3,32,1.3z M32,59.3
+                            C17,59.3,4.8,47,4.8,32C4.8,17,17,4.8,32,4.8C47,4.8,59.3,17,59.3,32C59.3,47,47,59.3,32,59.3z"/>
+                        </g>
+                        </svg>
+                        
+                      </a> 
+                    </div>
+                    <div class="utf-header-notifications-dropdown-block"> 
+                      <ul class="utf-user-menu-dropdown-nav">
+                        <li><a href="/student_profile"><i class=""></i> Edit Profile</a></li>
+                        <li><a href="/myapplication"><i class=""></i> My Applications</a></li>
+                        <li><a href="/logout"><i class=""></i> Logout</a></li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+
+                <span class="mmenu-trigger">
+                  <button class="hamburger utf-hamburger-collapse-item" type="button"> <span class="utf-hamburger-box-item"> <span class="utf-hamburger-inner-item"></span> </span> </button>
+                </span> 
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+      </header>
+            <!-- Titlebar -->
+            <div id="titlebar" class="gradient">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2>Jobs Listing Left Sidebar</h2>
+                    <nav id="breadcrumbs">
+                      <ul>
+                        <li><a href="index-1.html">Home</a></li>
+                        <li>Jobs Listing Left Sidebar</li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <!-- Dashboard Content -->
+        <div class="utf-dashboard-content-container-aera" data-simplebar >
+ 
+          <div class="utf-dashboard-content-inner-aera" > 
+            <div class="row"> 
+              <div class="col-xl-6">
+                <div class="dashboard-box margin-top-0 margin-bottom-30"> 
+                  <div class="headline">
+                    <h3>My Profile Details</h3>
+                  </div>
+                  <div class="content with-padding padding-bottom-0">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row">
+                <div class="col-xl-12">
+                <div class="row">
+                  <div class="col-md-12">
+                    <form method="post" class="form-horizontal" enctype="multipart/form-data" role="form" style="padding-top:2%">
+                       {% csrf_token %}  
+                       
+                   <div class="form-group col-md-12">
+                       <label for="id_email">Email address:</label> 
+                       <input class="form-control" type="email" name="email" value="{{user.email}}" maxlength="254" id="id_email" readonly>
+                   </div>    
+                       
+                   <div class="form-group col-md-12">
+                       <label for="id_first_name">First name:</label> 
+                       <input class="form-control" type="text" name="first_name" value="{{user.first_name}}" maxlength="30" id="id_first_name" readonly>
+                   </div>    
+           
+                   <div class="form-group col-md-12">    
+                       <label for="id_last_name">Last name:</label> 
+                       <input class="form-control" type="text" name="last_name" value="{{user.last_name}}" maxlength="150" id="id_last_name" readonly>
+                   </div>   
+           
+                   <div class="form-group col-md-12">    
+                       <label for="id_phone_no">Phone Number:</label> 
+                       <input class="form-control" type="tel" name="phone_no" value="{{student.phone_no}}" maxlength="150" id="id_phone_no">
+                   </div>   
+           
+                   <div class="form-group col-md-12">
+                   <label for="id_college_name">College name:</label> 
+                   <input class="form-control" type="text" name="college_name" value="{{student.college_name}}" maxlength="200" required="" id="id_college_name"></p>
+                   </div>
+           
+                   <div class="form-group col-md-12">
+                   <label for="id_basic_skills">Basic skills:</label> 
+                       <textarea class="form-control" name="basic_skills" cols="40" rows="10" required="" id="id_basic_skills">{{student.basic_skills}}</textarea>
+                   </div>
+           
+                   <div class="form-group col-md-12">
+                       <label for="id_image">Profile Image:</label>
+                       <input class="form-control" type="file" name="image" accept="image/*" id="id_image"></p>
+                   </div>
+           
+                   <div class="form-group col-md-12">
+                   <label for="id_city">City:</label> 
+                       <input class="form-control" type="text" name="city" value="{{student.city}}" maxlength="200" required="" id="id_city">
+                   </div>
+                   <div class="form-group col-md-12">    
+                   <label for="id_year_of_study">Year of study:</label> 
+                       
+                   <select class="form-control" name="year_of_study" required="" id="id_year_of_study" value="{{student.year_of_study}}">
+           
+                       <option value="{{user.year_of_study}}">{{user.year_of_study}}</option>
+           
+                       <option value="1">1st</option>
+                     
+                       <option value="2">2nd</option>
+                     
+                       <option value="3">3rd</option>
+                     
+                       <option value="4">4th</option>
+                     
+                   </select>
+                   </div>
+                    <div class="form-group col-md-12">
+                       <button style="background-color:#0356fc;  color:white" class="btn btn-outline-info" type="submit">Update</button> 
+                       <a href="/student_profile/" style="background-color:red; color:white" class="btn btn-outline-info">Cancel</a>
+                   </div>     
+                   </div>
+                   </form>
+               
+                </div>
+                </div>	
+                      
+             
+            </div>
+            
+            <!-- Footer -->
+            <div class="utf-dashboard-footer-spacer-aera"></div>
+            <div class="utf-small-footer margin-top-15">
+              <div class="utf-small-footer-copyrights">Copyright &copy; 2021 All Rights Reserved.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Dashboard Content / End -->     
+      </div>   
+      </div>
+      <!-- Wrapper / End --> 
+</body>
+
+<script src="{% static 'asset1/js/custom_jquery.js' %}"></script> 
+<script src="{% static 'asset1/js/typed.js' %}"></script> 
+<script src="{% static 'asset1/js/slick.min.js' %}"></script> 
+<script src="{% static 'asset1/js/magnific-popup.min.js' %}"></script> 
+<script src="{% static 'asset1/js/counterup.min.js' %}"></script> 
+<script src="{% static 'asset1/js/clipboard.min.js' %}"></script> 
+<script src="{% static 'asset1/js/snackbar.js' %}"></script> 
+<script src="{% static 'asset1/js/bootstrap-select.min.js' %}"></script> 
+<script src="{% static 'asset1/js/bootstrap-slider.min.js' %}"></script> 
+<script src="{% static 'asset1/js/simplebar.min.js' %}"></script> 
+<script src="{% static 'asset1/js/tippy.all.min.js' %}"></script> 
+<script src="{% static 'asset1/js/mmenu.min.js' %}"></script> 
+<script src="{% static 'asset1/js/jquery-migrate-3.0.0.min.js' %}"></script> 
+<script src="{% static 'asset1/js/jquery-3.3.1.min.js' %}"></script> 
+
+
+
+{% endblock content %}
+
+</html>

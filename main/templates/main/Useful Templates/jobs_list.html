@@ -1,0 +1,28 @@
+<!--Template to show the Internships posted by the Employer-->
+
+
+
+{% extends 'main/header.html' %}
+{% block content %}
+
+
+<div class="row">
+
+    {% for j in jobs %}
+             
+    <div class="row">
+            <div class="col-sm-4"> 
+               <div class="card bg-light mb-3 border-secondary mb-3" style="margin-top:40px">
+                   <div class="card-body">
+                   <h2 class="card-title" style="font-family: nexa">{{j.user}}</h2>
+                   <h3 class="card-subtitle">{{j.job_title}}</h3> 
+                   <p>{{j.job_published}}</p>             
+                   <h3><a href="/job_detail/{{j.id}}" style="color: cornflowerblue">View Details</a></h3>
+                   </div>
+             </div>
+         </div>
+   
+         
+    {% endfor %}
+
+{% endblock %}

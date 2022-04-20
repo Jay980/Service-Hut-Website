@@ -1,0 +1,558 @@
+
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Truelysell | Template</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+ 
+</head>
+
+<body class="body-three">
+
+    <div class="page-loading">
+        <div class="preloader-inner">
+            <div class="preloader-square-swapping">
+                <div class="cssload-square-part cssload-square-green"></div>
+                <div class="cssload-square-part cssload-square-pink"></div>
+                <div class="cssload-square-blend"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+
+        <header class="header header-three">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index.html" class="navbar-brand logo">
+                        <img src="assets/img/logo-three.png" class="img-fluid" alt="Logo">
+                    </a>
+                    <a href="index.html" class="navbar-brand logo-small">
+                        <!-- <img src="assets/img/logo-icon-2.png" class="img-fluid" alt="Logo"> -->
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index.html" class="menu-logo">
+                            <img src="{% static 'asset2/img/logo-three.png' %}" alt="">
+                            <img src="" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i
+                                class="fas fa-times"></i></a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active has-submenu">
+                            <a href="http://127.0.0.1:8000/">Home </a>
+                            
+                        </li>
+                        <li>
+                            <a href="/all_services">Services</a>
+                        </li>
+                        <li>
+                            {% if user.is_authenticated %}            <!--When the user is logged in-->
+                            {% else %}
+                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#provider-register">Become a Professional</a>
+                            </li>
+                            <li>
+                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#user-register">Become a User</a>
+                            </li> 
+                            {% endif %}
+                       
+                    </ul>
+                </div>
+         
+
+                <ul class="nav header-navbar-rht" style="margin-right: 10%;">
+             
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}            <!--When the user is logged in-->
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link header-login" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#login_modal">Login</a>
+                            </li>
+                            {% endif %}
+                            {% if user.is_authenticated %}  
+                <ul class="main-nav">
+                    <li class="has-submenu" style="color: black;">
+                            <a href="index-three.html#" style="color: black;">{{request.user.first_name}} <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu" style="color: black;">
+                                <li><a style="color: black;" href="/profile/edit_student/">Edit Profile</a></li>
+                                <li><a style="color: black;" href="/logout">Logout</a></li>
+                                
+                            </ul>
+                        </li>
+                </ul>
+                {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+
+
+
+
+
+
+        <div class="content">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-8">
+                      <div class="service-view">
+                          <div class="service-header">
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <h1>{{Service.role}}</h1>
+                                  <div class="fav-btn fav-btn-big">
+                                      <a href="javascript:void(0)" class="fav-icon with-border">
+                                          <i class="fas fa-heart"></i>
+                                      </a>
+                                  </div>
+                              </div>
+                              <address class="service-location"><i class="fas fa-location-arrow"></i> {{Service.location}}</address>
+                              <div class="rating">
+                                  <i class="fas fa-star filled"></i>
+                                  <i class="fas fa-star filled"></i>
+                                  <i class="fas fa-star filled"></i>
+                                  <i class="fas fa-star filled"></i>
+                                  <i class="fas fa-star filled"></i>
+                                  <span class="d-inline-block average-rating">(5)</span>
+                              </div>
+                              <div class="service-cate">
+                                  <a href="search.html">Automobile</a>
+                              </div>
+                          </div>
+                          <img src="{% static 'asset2/img/services/service-02.jpg' %}" alt="" class="img-fluid">
+                       <br><br><br>
+                          <div class="service-details">
+                              <ul class="nav nav-pills service-tabs" id="pills-tab" role="tablist">
+                                 
+                                  <li class="nav-item">
+                                      <a class="nav-link" id="pills-book-tab" data-toggle="pill"
+                                          href="service-details.html#pills-book" role="tab" aria-controls="pills-book"
+                                          aria-selected="false">Reviews</a>
+                                  </li>
+                              </ul>
+                              <div class="tab-content">
+                                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                      aria-labelledby="pills-home-tab">
+                                      <div class="card service-description">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Service Details</h5>
+                                              <p class="mb-0">{{Service.content}}</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                      aria-labelledby="pills-profile-tab">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <h5 class="card-title">Services Offered</h5>
+                                              <div class="service-offer">
+                                                  <ul class="list-bullet">
+                                                      <li>Lorem Ipsum</li>
+                                                      <li>Lorem Ipsum</li>
+                                                      <li>Lorem Ipsum</li>
+                                                      <li>Lorem Ipsum</li>
+                                                      <li>Lorem Ipsum</li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="tab-pane fade" id="pills-book" role="tabpanel"
+                                      aria-labelledby="pills-book-tab">
+                                      <div class="card review-box">
+                                          <div class="card-body">
+                                              <div class="review-list">
+                                                  <div class="review-img">
+                                                      <img class="rounded-circle"
+                                                          src="assets/img/customer/user-01.jpg" alt="">
+                                                  </div>
+                                                  <div class="review-info">
+                                                      <h5>Jeffrey Akridge</h5>
+                                                      <div class="review-date">August 06, 2020 20:07 pm</div>
+                                                      <p class="mb-0">Good Work</p>
+                                                  </div>
+                                                  <div class="review-count">
+                                                      <div class="rating">
+                                                          <i class="fas fa-star filled"></i>
+                                                          <i class="fas fa-star filled"></i>
+                                                          <i class="fas fa-star filled"></i>
+                                                          <i class="fas fa-star filled"></i>
+                                                          <i class="fas fa-star filled"></i>
+                                                          <span class="d-inline-block average-rating">(5.0)</span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                   
+                  </div>
+                  <div class="col-lg-4 theiaStickySidebar">
+                      <div class="sidebar-widget widget">
+                          <div class="service-amount">
+                              <span> {{Service.charges}} Rs</span>
+                          </div>
+    
+                      </div>
+                      <div class="card provider-widget clearfix">
+                          <div class="card-body">
+                              <h5 class="card-title">Service Provider</h5>
+                              <div class="about-author">
+                                  <div class="about-provider-img">
+                                      <div class="provider-img-wrap">
+                                          <a href="javascript:void(0);">
+                                              <img class="img-fluid rounded-circle" alt=""
+                                                  src="assets/img/provider/provider-01.jpg">
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <div class="provider-details">
+                                      <a href="javascript:void(0);" class="ser-provider-name"> {{Service.company.user.name}}</a>
+                                      <p class="last-seen"><i class="fas fa-circle online"></i> Online</p>
+                                     
+                                  </div>
+                              </div>
+                              <hr>
+                              <div class="provider-info">
+                                  <p class="mb-1"><i class="far fa-envelope"></i> 
+                                    {{Service.company.user.email}}
+                                  </p>
+                                  <p class="mb-0"><i class="fas fa-phone-alt"></i>  {{Service.company.phone_no}}</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card available-widget">
+                          <div class="card-body">
+                              <h5 class="card-title">Service Availability</h5>
+                              <ul>
+                                  <li><span>Monday</span>9:30 AM - 7:00 PM</li>
+                                  <li><span>Tuesday</span>9:30 AM - 7:00 PM</li>
+                                  <li><span>Wednesday</span>9:30 AM - 7:00 PM</li>
+                                  <li><span>Thursday</span>9:30 AM - 7:00 PM</li>
+                                  <li><span>Friday</span>9:30 AM - 7:00 PM</li>
+                                  <li><span>Saturday</span>9:30 AM - 7:00 PM</li>
+                                  <li><span>Sunday</span>9:30 AM - 7:00 PM</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  
+      <footer class="footer footer-three">
+
+        <div class="footer-top aos" data-aos="fade-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="footer-widget footer-menu">
+                            <div class="footer-logo-sell">
+                                <img src="assets/img/logo-two.png" alt="img">
+                            </div>
+                            <div class="footer-about">
+                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque
+                                    the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis.
+                                    Praesent pharetra, justo ut scel erisque the mattis, </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="footer-widget footer-menu">
+                            <h2 class="footer-title">Service</h2>
+                            <ul>
+                               
+                                    <a href="#"><i class="fas fa-check-double"></i>Plumbing</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="footer-widget footer-contact">
+                            <h2 class="footer-title">Contact </h2>
+                            <div class="footer-contact-info">
+                                <div class="footer-address">
+                                    <span><i class="fa fa-map-marker"></i></span>
+                                    <p>367 Hillcrest Lane, Irvine, California, United States</p>
+                                </div>
+                                <p><i class="fa fa-mobile"></i> 321 546 8764</p>
+                                <p class="mb-0"><i class="fas fa-envelope"></i> <a
+                                        href="https://truelysell-html.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="dda9afa8b8b1a4aeb8b1b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-dots">
+                            <img src="assets/img/foot-dot.png" alt="img">
+                        </div>
+
+                        <div class="footer-widget">
+                            <h2 class="footer-title">Follow Us</h2>
+                            <div class="subscribe-form">
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <a href="#"
+                                    class="btn footer-btn d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-paper-plane"></i>
+                                </a>
+                            </div>
+                            <div class="social-icon">
+                                <ul>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i
+                                                class="fab fa-facebook-f"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i
+                                                class="fab fa-youtube"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="index-three.html#" target="_blank"><i
+                                                class="fab fa-google"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+            <div class="container">
+
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                           
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+
+                            <div class="copyright-menu">
+                                <ul class="policy-menu">
+                                    <li>
+                                        <a href="#">Terms and Conditions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Privacy</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+  </div>
+
+  <div class="modal account-modal fade multi-step" id="provider-register" data-keyboard="false"
+  data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header p-0 border-0">
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="login-header">
+                  <h3>Join as a Provider</h3>
+              </div>
+
+              <form method="POST"  action="{% url 'main:register_as_company' %}"  role="form" enctype="multipart/form-data" class="form-horizontal">
+                  {% csrf_token %}
+        
+                  <div class="form-group col-lg-8">
+                    <label for="id_name">Company Name:</label>
+                    <input class="form-control" type="text" name="name" maxlength="30" autofocus=""  id="id_name">
+                  </div>
+        
+                  <div class="form-group col-lg-8">
+                    <label for="id_email">Email:</label>
+                    <input class="form-control" type="email" name="email" required="" id="id_email">
+                  </div>   
+        
+                  <div class="form-group col-lg-8">
+                    <label for="id_password1">Password:</label>
+                    <input class="form-control" type="password" name="password" required="" id="id_password">
+                  </div>
+        
+                  
+                  <div class="form-group col-lg-8">
+                    <label for="id_password2">Password confirmation:</label>
+                    <input class="form-control" type="password" name="confirm_password" required="" id="id_confirm_password">
+                  </div>
+                  
+        
+                  <div class="form-group col-lg-8">
+                    <button style="background-color:#0356fc; color:white" class="btn btn-outline-info" type="submit">Sign Up</button>
+                  </div>
+                </form> 
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal account-modal fade multi-step" id="user-register" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header p-0 border-0">
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="login-header">
+                  <h3>Join as a User</h3>
+              </div>
+              <form method="POST" action="{% url 'main:register_as_student' %}" enctype="multipart/form-data" class="form-horizontal" role="form">
+                  {% csrf_token %}
+                    <div class="form-group col-lg-12">
+                        <label for="id_first_name">First name:</label> 
+                        <input class="form-control utf-with-border" type="text" name="first_name" maxlength="30" autofocus="" id="id_first_name">
+                        </div>
+  
+                        <div class="form-group col-lg-12">
+                        <label for="id_last_name">Last name:</label> 
+                        <input class="form-control" type="text" name="last_name" maxlength="150" id="id_last_name">
+                        </div>
+  
+                        <div class="form-group col-lg-12">
+                        <label for="id_email">Email:</label> 
+                        <input class="form-control" type="email" name="email" required="" id="id_email">
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                        <label for="id_password">Password:</label> 
+                        <input class="form-control" type="password" name="password" required="" id="id_password">
+                        </div>
+                        
+                        <div class="form-group col-lg-12">
+                        <label for="id_confirm_password">Password confirmation:</label> 
+                        <input class="form-control" type="password" name="confirm_password" required="" id="id_confirm_password">
+                        </div>
+
+  
+  
+                        <div class="form-group col-lg-8">
+                        <button style="background-color:#0356fc; color:white" class="btn btn-outline-info" type="submit">Sign Up</button>
+                        </div>
+                        <div class="form-group col-lg-8">
+                        If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+                        </div>
+                    </form>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal account-modal fade" id="login_modal">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header p-0 border-0">
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"> <span
+                      aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="login-header">
+                  <h3>Login <span>Truelysell</span></h3>
+              </div>
+                                   
+       
+              <form method="POST"  action="{% url 'main:login' %}" class="form-horizontal" id="login-form" role="form">
+                  {% csrf_token %}
+
+                  <div class="form-group form-focus">
+                      <label class="focus-label">Email</label>
+                      <input type="email" class="form-control" name="username" autofocus="" required="" id="id_username" placeholder="Email Address" required/>
+                  </div>
+                  <div class="form-group form-focus">
+                      <label class="focus-label">Password</label>
+                      <input type="password" class="form-control"  name="password" required="" id="id_password" placeholder="Password" required/>
+                  </div>
+                  <div class="text-end">
+                  </div>
+                  <div class="d-grid log-in-three">
+                      <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
+                  </div>
+                  
+                  
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+
+
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/plugins/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="assets/plugins/aos/aos.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+
+<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+
+<script src="{% static 'asset2/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'asset2/js/popper.min.js' %}"></script>
+<script src="{% static 'asset2/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'asset2/plugins/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'asset2/plugins/aos/aos.js' %}"></script>
+<script src="{% static 'asset2/js/script.js' %}"></script>
+
+</html>
+{% endblock content %}

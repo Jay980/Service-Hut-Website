@@ -1,0 +1,310 @@
+{% extends 'student/studentbase.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Preloader Start -->
+    
+    <!-- Preloader End -->
+<!-- choose one -->
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">
+<meta name="theme-color" content="#ff8a00">
+<meta name="description" content="Job Portal HTML Template">
+<meta name="keywords" content="Employment, Naukri, Shine, Indeed, Job Posting, Job Provider">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="wrapper"> 
+        <!-- Header Container -->
+        
+        <header id="utf-header-container-block"> 
+          <div id="header">
+            <div class="container"> 
+              <div class="utf-left-side"> 
+                <div id="logo"> <a href="index-1.html"><img src="{% static 'asset1/images/logoimage.png' %}" alt=""></a> </div>
+                <nav id="navigation">
+                  <ul id="responsive">
+                    <li><a href="http://127.0.0.1:8000/" class="current ">Home </a>
+                     
+                    </li>
+                    <li class=""><a href="/all_services">Internships  </a>
+                
+                
+           
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </nav>
+                <div class="clearfix"></div>                    
+              </div>
+              
+              <div class="utf-right-side"> 
+                {% if user.is_authenticated %}            <!--When the user is logged in-->
+                {% else %}
+                <div class="utf-header-widget-item"> <a href="/register_as_student" class="log-in-button"><span>Sign In</span></a> </div>	
+               <a href="/login"><div class="utf-header-widget-item"> <a href="/login" class=" log-in-button"><?xml version="1.0" encoding="utf-8"?>
+           
+                </svg>
+                 <span>Login</span></a> </div>	</a> 
+                {% endif %}
+                {% if user.is_authenticated %}            <!--When the user is logged in-->
+
+                <div class="utf-header-widget-item"> 
+                  <div class="utf-header-notifications user-menu">
+                    <div class="utf-header-notifications-trigger "> 
+                 
+                      <div class="user-name" style="position: relative; top: 20px; left: 10px;">{{request.user.first_name}}</div>	
+                        
+                      <a href="#">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg fill="#000000" width="20" height="20" version="1.1" id="lni_lni-chevron-down-circle"
+                           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64"
+                           style="enable-background:new 0 0 64 64;" xml:space="preserve">
+                        <g>
+                          <path d="M46.8,25.3L32,35.4L17.2,25.3c-0.8-0.5-1.9-0.3-2.4,0.5c-0.5,0.8-0.3,1.9,0.5,2.4l15.4,10.4C31,38.9,31.5,39,32,39
+                            c0.5,0,1-0.1,1.5-0.4l15.3-10.4c0.8-0.5,1-1.6,0.5-2.4C48.7,24.9,47.6,24.7,46.8,25.3z"/>
+                          <path d="M32,1.3C15,1.3,1.3,15,1.3,32C1.3,49,15,62.8,32,62.8C49,62.8,62.8,49,62.8,32C62.8,15,49,1.3,32,1.3z M32,59.3
+                            C17,59.3,4.8,47,4.8,32C4.8,17,17,4.8,32,4.8C47,4.8,59.3,17,59.3,32C59.3,47,47,59.3,32,59.3z"/>
+                        </g>
+                        </svg>
+                        
+                      </a> 
+                    </div>
+                    <div class="utf-header-notifications-dropdown-block"> 
+                      <ul class="utf-user-menu-dropdown-nav">
+                        <li><a href="/student_profile"><i class=""></i> Edit Profile</a></li>
+                        <li><a href="/myapplication"><i class=""></i> My Applications</a></li>
+                        <li><a href="/logout"><i class=""></i> Logout</a></li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+
+                <span class="mmenu-trigger">
+                  <button class="hamburger utf-hamburger-collapse-item" type="button"> <span class="utf-hamburger-box-item"> <span class="utf-hamburger-inner-item"></span> </span> </button>
+                </span> 
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+      </header>
+        <div class="clearfix"></div>
+        <!-- Header Container / End --> 
+        
+        <!-- Titlebar -->
+        <div id="titlebar" class="gradient">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Sign Up</h2>
+                <nav id="breadcrumbs">
+                  <ul>
+                    <li><a href="http://127.0.0.1:8000/">Home</a></li>
+                    <li>Sign Up</li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+   <!-- Page Content -->
+   <div class="container">
+    <div class="row">
+      <div class="col-xl-6 offset-xl-3">
+        <div class="utf-login-register-page-aera margin-bottom-50"> 
+          <div class="utf-welcome-text-item">
+            <h3>Create Your New Account!</h3>
+            <span>Don't Have an Account? <a href="login.html">Log In!</a></span> 
+		  </div>
+      <div class="utf-account-type">
+            <div>
+              <input type="radio" name="utf-account-type-radio" id="employer-radio" class="utf-account-type-radio" checked/>
+              <label for="employer-radio" title="Candidate" data-tippy-placement="top" class="utf-ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Candidate</label>
+            </div>
+            <div>
+              <input type="radio" name="utf-account-type-radio" id="freelancer-radio" class="utf-account-type-radio" />
+              <label for="freelancer-radio" title="Employer" data-tippy-placement="top" class="utf-ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Employer</label>
+            </div>
+          </div>
+          
+                   <form method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+                    {% csrf_token %}
+                      <div class="form-group col-lg-12">
+                          <label for="id_first_name">First name:</label> 
+                          <input class="form-control utf-with-border" type="text" name="first_name" maxlength="30" autofocus="" id="id_first_name">
+                          </div>
+    
+                          <div class="form-group col-lg-12">
+                          <label for="id_last_name">Last name:</label> 
+                          <input class="form-control" type="text" name="last_name" maxlength="150" id="id_last_name">
+                          </div>
+    
+                          <div class="form-group col-lg-12">
+                          <label for="id_email">Email:</label> 
+                          <input class="form-control" type="email" name="email" required="" id="id_email">
+                          </div>
+
+                          <div class="form-group col-lg-12">
+                          <label for="id_password">Password:</label> 
+                          <input class="form-control" type="password" name="password" required="" id="id_password">
+                          </div>
+                          
+                          <div class="form-group col-lg-12">
+                          <label for="id_confirm_password">Password confirmation:</label> 
+                          <input class="form-control" type="password" name="confirm_password" required="" id="id_confirm_password">
+                          </div>
+  
+    
+    
+                          <div class="form-group col-lg-8">
+                          <button style="background-color:#0356fc; color:white" class="btn btn-outline-info" type="submit">Sign Up</button>
+                          </div>
+                          <div class="form-group col-lg-8">
+                          If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+                          </div>
+                      </form>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+        <!-- Subscribe Block Start -->
+        <section class="utf_cta_area_item utf_cta_area2_block">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="utf_subscribe_block">
+                          <div class="col-xl-8 col-md-7">
+                              <div class="section-heading">
+                                  <h2 class="utf_sec_title_item utf_sec_title_item2">Subscribe to Our Newsletter!</h2>
+                                  <p class="utf_sec_meta">Subscribe to get latest updates and information.</p>
+                              </div>
+                          </div>
+                          <div class="col-xl-4 col-md-5">
+                              <div class="contact-form-action">
+                                  <form method="post">
+                                      <i class="icon-material-baseline-mail-outline"></i>
+                                      <input class="form-control" type="email" placeholder="Enter your email" required="">
+                                      <button class="utf_theme_btn" type="submit">Subscribe</button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </section>
+        <!-- Subscribe Block End -->
+        
+        <!-- Footer -->
+        <div id="footer"> 
+          <div class="utf-footer-section-item-block">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-4 col-md-12">
+                  <div class="utf-footer-item-links">
+                      <a href="index-1.html"><img class="footer-logo" src="images/footer_logo.png" alt=""></a>
+                      <p>Lorem Ipsum is simply dummy text of printing and type setting industry. Lorem Ipsum been industry standard dummy text ever since, when unknown printer took a galley type scrambled.</p>								
+                  </div>
+                </div>
+                
+                <div class="col-xl-2 col-md-3 col-sm-6">
+                  <div class="utf-footer-item-links">
+                    <h3>Job Categories</h3>
+                    <ul>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Developement</span></a></li>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Designing</span></a></li>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Marketing</span></a></li>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Data Analytics</span></a></li>				
+                      <li><a href="login.html#"><i class="icon-feather-chevron-right"></i> <span>Post New Job</span></a></li>				
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="col-xl-2 col-md-3 col-sm-6">
+                  <div class="utf-footer-item-links">
+                    <h3>Job Type</h3>
+                    <ul>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Work from Home</span></a></li>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Service Job</span></a></li>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Freelancer Job</span></a></li>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Part Time Job</span></a></li>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Full Time Job</span></a></li>					
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="col-xl-2 col-md-3 col-sm-6">
+                  <div class="utf-footer-item-links">
+                    <h3>Resources</h3>
+                    <ul>
+                      <li><a href="login.html#"><i class="icon-feather-chevron-right"></i> <span>My Account</span></a></li>
+                      <li><a href="login.html#"><i class="icon-feather-chevron-right"></i> <span>Support</span></a></li>
+                      <li><a href="login.html#"><i class="icon-feather-chevron-right"></i> <span>How It Works</span></a></li>
+                      <li><a href="login.html#"><i class="icon-feather-chevron-right"></i> <span>Underwriting</span></a></li>
+                      <li><a href="login.html#"><i class="icon-feather-chevron-right"></i> <span>Employers</span></a></li>                
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="col-xl-2 col-md-3 col-sm-6">
+                  <div class="utf-footer-item-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                      <li><a href="jobs-list-layout-leftside.html"><i class="icon-feather-chevron-right"></i> <span>Jobs Listing</span></a></li>
+                      <li><a href="about-us.html"><i class="icon-feather-chevron-right"></i> <span>About Us</span></a></li>
+                      <li><a href="contact.html"><i class="icon-feather-chevron-right"></i> <span>Contact Us</span></a></li>
+                      <li><a href="privacy-policy.html"><i class="icon-feather-chevron-right"></i> <span>Privacy Policy</span></a></li>
+                      <li><a href="terms-condition.html"><i class="icon-feather-chevron-right"></i> <span>Term & Condition</span></a></li>
+                    </ul>
+                  </div>
+                </div>          
+              </div>
+            </div>
+          </div>
+          
+          <!-- Footer Copyrights -->
+          <div class="utf-footer-copyright-item">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-12">Copyright &copy; 2021 All Rights Reserved.</div>
+              </div>
+            </div>
+          </div>
+          <!-- Footer Copyrights / End -->     
+        </div>
+        <!-- Footer / End -->    
+      </div>
+      <!-- Wrapper / End --> 
+</body>
+
+<script src="{% static 'asset1/js/custom_jquery.js' %}"></script> 
+<script src="{% static 'asset1/js/typed.js' %}"></script> 
+<script src="{% static 'asset1/js/slick.min.js' %}"></script> 
+<script src="{% static 'asset1/js/magnific-popup.min.js' %}"></script> 
+<script src="{% static 'asset1/js/counterup.min.js' %}"></script> 
+<script src="{% static 'asset1/js/clipboard.min.js' %}"></script> 
+<script src="{% static 'asset1/js/snackbar.js' %}"></script> 
+<script src="{% static 'asset1/js/bootstrap-select.min.js' %}"></script> 
+<script src="{% static 'asset1/js/bootstrap-slider.min.js' %}"></script> 
+<script src="{% static 'asset1/js/simplebar.min.js' %}"></script> 
+<script src="{% static 'asset1/js/tippy.all.min.js' %}"></script> 
+<script src="{% static 'asset1/js/mmenu.min.js' %}"></script> 
+<script src="{% static 'asset1/js/jquery-migrate-3.0.0.min.js' %}"></script> 
+<script src="{% static 'asset1/js/jquery-3.3.1.min.js' %}"></script> 
+
+
+
+{% endblock content %}
+
+</html>

@@ -1,0 +1,220 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>ServiceHut</title>
+    <link rel="stylesheet" href="{% static 'adminasset/assets/img/favicon.png'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/bootstrap/css/bootstrap.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/fontawesome/css/fontawesome.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/fontawesome/css/all.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/css/animate.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'adminasset/assets/css/admin.css'  %}">
+
+    
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo logo-small">
+                    <img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fas fa-align-left"></i>
+            </a>
+            <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                <i class="fas fa-align-left"></i>
+            </a>
+          
+        </div>
+
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo-icon.png" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="active">
+                            <a href="/company_profile"><i class="fas fa-columns"></i> <span>Dashboard</span></a>
+                        </li>
+                   
+                       
+                        <li >
+                            <a href="/service_posted"><i class="fas fa-bullhorn"></i> <span>Posted Services</span></a>
+                        </li>
+                       
+                        <li>
+                            <a href="/post_service"><i class="fas fa-bullhorn"></i> <span> Post Services</span></a>
+                        </li>
+                       
+                          
+                        <li>
+                            <a href="/profile/edit_company"><i class="fas fa-bullhorn"></i> <span> Edit Profile</span></a>
+                        </li>
+                       
+                      
+                      
+                     
+                        <li>
+                            <a href="/logout"><i class="fas fa-bullhorn"></i> <span> Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="page-title">Welcome Admin!</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="far fa-user"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>429</h3>
+                                        <h6 class="text-muted">Users</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="fas fa-user-shield"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>148</h3>
+                                        <h6 class="text-muted">Providers</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="fas fa-qrcode"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>124</h3>
+                                        <h6 class="text-muted">Services</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="dash-widget-header">
+                                    <span class="dash-widget-icon bg-primary">
+                                        <i class="far fa-credit-card"></i>
+                                    </span>
+                                    <div class="dash-widget-info">
+                                        <h3>$11378</h3>
+                                        <h6 class="text-muted">Subscription</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex">
+                        {% if user.is_company %}
+                        <div>
+                            {% for message in messages %}
+                               <div class="message">
+                               <h4 style="text-align: center; color:slateblue;">{{ message }}</h4>
+                               <a href="#" class="del-msg"></a>
+                               </div>
+                            {% endfor %}
+                        </div>
+                        <div class="card card-table flex-fill">
+                            <div class="card-header">
+                                <h4 class="card-title">Recent Bookings</h4>
+                            </div>
+                            <div class="card-body">
+                       
+                          
+                            
+                            <div class="row">
+                           
+                    
+                              <div class="col-md-5 personal-info" style="padding-top:2%;padding-left: 5%;">
+                    
+                                <h2 id="profile-head"style="color: cornflowerblue">Company info</h2>
+                                
+                                <hr>
+                                {% if company.image %}
+                                <img src="/media/{{company.image}}" style="align-content: center;width: 50%; height:30%; border-radius: 25px"">
+                                {% else %}
+                                <img src="{% static 'main/student.png' %}" style="width: 50%; height:40%; border-radius: 25px">
+                                {% endif %}
+                                <hr>
+                                <h4> Company Name: </h4>
+                                <h5> {{user.name}} </h5><hr>
+                    
+                                <h4> Email: </h4> 
+                                <h5> {{user.email}} </h5><hr>
+                                {% if company.head_office_location %}
+                                <h4> Main Office Location: </h4> 
+                                <h5> {{company.head_office_location}} </h5><hr>
+                                {% endif %}
+                              </div>
+                            </div>
+                            
+                            <div clas="apply-btn" style="margin-left: 45%;margin-top: 3%;">
+                              <button class="button"><span><a href="/post_service" style="color: black">Post an Service</a></span></button>
+                            </div>
+                            
+                            {% elif user.is_normal %}
+                            <h1 style="text-align: center;color: crimson">XX--You can't access this page--XX</h1>
+                            <h2 style="text-align:center">Click on <a style="color:crimson" href="/student_profile">this</a> to go to back to student's profile</h2>        
+                            {% endif %}        
+                        
+                            </div>
+                        </div>
+
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'adminasset/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'adminasset/assets/js/admin.js' %}"></script>
+
+</body>
+
+</html>

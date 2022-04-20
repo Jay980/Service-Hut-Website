@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> Post A Job </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    {% if user.is_company %}
+    <nav class="navbar navbar-light" style="background-color:#DCDCDC;">
+           <a class="navbar-brand" href="/"> 
+            <img width="200px" height="35px" src="{% static 'main/Logo.svg' %}" alt="">
+            </a>
+                <div class="btn-group">
+                    <button type="button" class="btn "> Company PROFILE </button>
+                    <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a href="/company_profile" class="dropdown-item"> {{user.name}} </a><hr>
+                      <a href="/profile/edit_company" class="dropdown-item"> Edit Profile </a>
+                      <a href="/change-password" class="dropdown-item"> Change Password </a>
+                      <a href="/service_posted" class="dropdown-item">Posted internships</a>
+                      <a href="/interns_applied" class="dropdown-item">Interns Applied</a>
+                      <a href="/accepted_interns" class="dropdown-item">Accepted Interns</a>
+                      <a href="/rejected_interns" class="dropdown-item">Rejected Interns</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="/logout" class="dropdown-item"> Logout </a>
+                  </div>
+                </div>  
+                          
+    </nav>
+        <div class="container">
+                <h2 id="std-head" style="color: rgb(106, 209, 243); padding-left: 5%;padding-right: 2%"> Post an Service </h2>
+                  <hr>
+                <div class="row">
+                  <!-- left column -->
+                  <div class="col-md-5">
+                    <div class="text-center">
+                      <img src="{% static 'main/emp-profile/jobpost.svg' %}" width="100%" height="100%" style="padding-top: 5%" > 
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="col-md-7 personal-info">              
+                    <h4> Fill the Required Fields </h4>
+            
+                    <form method="POST" class="form-horizontal" role="form">
+                        {% csrf_token %}
+
+                        <!-- Categories -->
+
+                        <div class="form-group">
+                          <label for="id_category" class="col-lg-3 control-label">Category:</label> 
+                          <div class="col-lg-8">
+                            
+                          <select class="form-control" name="category" id="id_category">
+                            
+                            <option value="none" selected disabled hidden>Select an option </option>
+
+                            {% for cat in categories %}
+                              <option value = "{{cat.id}}">{{cat.category_name}}</option>
+                            {% endfor %}
+
+                          </select class="form-control">  
+
+                        </div>
+                        </div>
+                        
+                        <!-- Job Title -->
+                        <div class="form-group">
+                         <label for="id_role" class="col-lg-3 control-label">Role:</label> 
+                        <div class="col-lg-8">
+                          <input class="form-control" type="text" name="role" maxlength="200" required="" id="id_role">
+                        </div>
+                         </div>
+                      
+                      <div class="form-group">
+                       <label for="id_location" class="col-lg-3 control-label">Location:</label> 
+                       <div class="col-lg-8">
+                        <select class="form-control" name="location" id="id_location">
+
+                          <option value="none" selected disabled hidden>Select an option </option>
+
+                          {% for loc in locations %}
+                            <option value = "{{loc.id}}">{{loc.location_name}}</option>
+                          {% endfor %}
+                        
+                        </select>
+
+                      </div>
+                    </div>
+                  
+                  
+                       <div class="form-group">
+                       <label for="id_duration" class="col-lg-5 control-label">(in months):</label> 
+                       <div class="col-lg-8"><input class="form-control" type="number" min="1" value="1" name="" maxlength="200" required="" id="job_duration">
+                      </div></div>
+                  
+                       <div class="form-group">
+                       <label for="id_content" class="col-lg-4 control-label">Description:</label> 
+                       <div class="col-lg-8">
+                        <textarea class="form-control" name="content" cols="40" rows="10" required="" id="id_content">
+
+                        </textarea>
+                      </div></div>
+                      
+                       <div class="form-group">
+                       <label for="id_stipend" class="col-lg-5 control-label">charges(in INR):</label> 
+                       <div class="col-lg-8"><input class="form-control" type="number" min="0" value="0" name="charges" maxlength="200" required="" id="job_stipend">
+                      </div></div>
+                  
+                      <div class="form-group">
+                          <label class="col-md-3 control-label"></label>
+                          <div class="col-md-8">
+                              <button style="background-color:#0356fc; color:white" class="btn btn-outline-info" type="submit">Submit</button>
+                            <a href="/employer_profile/" style="background-color:red; color:white" class="btn btn-outline-info">Cancel</a>
+                          </div>
+                        </div>
+
+                      </form>
+            
+                  </div>
+              </div>
+
+        </div>
+        {% elif user.is_normal %}
+        <h1 style="text-align: center;color: crimson">XX--You can't access this page--XX</h1>
+        <h2 style="text-align:center">Click on <a style="color:crimson" href="/student_profile">this</a> to go to back to student's profile</h2>
+
+        {% endif %}        
+</body>
+</html>
