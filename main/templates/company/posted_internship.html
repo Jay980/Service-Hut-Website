@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Truelysell | Template</title>
+    <title>Service Hut</title>
     <link rel="stylesheet" href="{% static 'adminasset/assets/img/favicon.png'  %}">
     <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/bootstrap/css/bootstrap.min.css'  %}">
     <link rel="stylesheet" href="{% static 'adminasset/assets/plugins/fontawesome/css/fontawesome.min.css'  %}">
@@ -82,10 +82,8 @@
                       <h3 class="page-title">Posted Services</h3>
                   </div>
                   <div class="col-auto text-end">
-                      <a class="btn btn-white filter-btn me-3" href="javascript:void(0);" id="filter_search">
-                          <i class="fas fa-filter"></i>
-                      </a>
-                      <a href="add-subcategory.html" class="btn btn-primary add-button ml-3">
+                     
+                      <a href="/post_service" class="btn btn-primary add-button ml-3">
                           <i class="fas fa-plus"></i>
                       </a>
                   </div>
@@ -111,7 +109,7 @@
                                     <td>1</td>
                                     <td>
                                         <img class="rounded service-img me-1"
-                                            src="{% static 'adminasset/assets/img/sub-category/sub-category-01.jpg' %}" alt="">{{product.role}}
+                                            src="{{product.image.url}}" alt="">{{product.role}}
                                     </td>
                                     <td>{{product.category}} </td>
                                     <td class="text-end">

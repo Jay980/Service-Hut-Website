@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Truelysell | Template</title>
+    <title>Service Hut</title>
 
     <link rel="shortcut icon" href="assets/img/favicon.png">
  
@@ -40,11 +40,15 @@
                         </span>
                     </a>
                     <a href="index.html" class="navbar-brand logo">
-                        <img src="assets/img/logo-three.png" class="img-fluid" alt="Logo">
+                        <style>
+                            #imagelogo{
+                                width: 100px !important;
+                            }
+                        </style>
+                        <img src="{% static 'asset2/Service_logo.png' %}" id="imagelogo" class="img-fluid" alt="Logo">
                     </a>
                     <a href="index.html" class="navbar-brand logo-small">
-                        <!-- <img src="assets/img/logo-icon-2.png" class="img-fluid" alt="Logo"> -->
-                    </a>
+                        <img src="{% static 'asset2/Service_logo.png' %}" class="img-fluid" alt="Logo">                    </a>
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
@@ -112,24 +116,12 @@
                                 <div class="section-search">
                                     <h3><span>World's Largest</span> <br> Marketplace</h3>
                                     <p>Search From 150 Awesome Verified Ads!</p>
-                                    <div class="search-box">
+                                    <div class="">
                                         <form action="#">
-                                            <div class="search-input line">
-                                                <i class="fa fa-th-large bficon"></i>
-                                                <div class="form-group mb-0">
-                                                    <input type="text" class="form-control"
-                                                        placeholder="What are you looking for?">
-                                                </div>
-                                            </div>
-                                            <div class="search-input location-light">
-                                                <i class="fa-light fa-location-dot"></i>
-                                                <div class="form-group mb-0">
-                                                    <input type="text" class="form-control" placeholder="Your Location">
-                                                </div>
-                                            </div>
+                                          
                                             <div class="search-btn">
-                                                <button class="btn search_service"><i
-                                                        class="fa fa-search"></i>Search</button>
+                                             <a href="/all_services" class="btn search_service">  <i
+                                                        class="fa fa-search"></i>Search</a> 
                                             </div>
                                         </form>
                                     </div>
@@ -143,7 +135,7 @@
 
 
 
-        <section class="popular-services popular-services-three">
+        <!-- <section class="popular-services popular-services-three">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -639,7 +631,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
 
         <section class="how-work work-standard">
@@ -650,7 +642,7 @@
                             <h2>How IT Works</h2>
                         </div>
                         <div class="section-heading section-heading-three text-center aos" data-aos="fade-up">
-                            <span>Aliquam lorem ante, dapibus in, viverra quis</span>
+                           
                             <div class="section-three">
                                 <h2>How It Works</h2>
                             </div>
@@ -665,9 +657,8 @@
                                         <div class="iconround d-flex align-items-center justify-content-center">
                                             <img src="assets/img/work-icon-10.png" alt="">
                                         </div>
-                                        <h3>Choose What To Do</h3>
-                                        <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat Phasellus viverra nulla
-                                            ut metus varius laoreet.</p>
+                                        <h3>Go to Services</h3>
+                                        
                                         <h2>01</h2>
                                     </div>
                                 </div>
@@ -679,9 +670,8 @@
                                         <div class="iconround d-flex align-items-center justify-content-center">
                                             <img src="assets/img/work-icon-11.png" alt="">
                                         </div>
-                                        <h3>Find What You Want</h3>
-                                        <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat Phasellus viverra nulla
-                                            ut metus varius laoreet.</p>
+                                        <h3>Find What Service You Want</h3>
+                                       
                                         <h2>02</h2>
                                     </div>
                                 </div>
@@ -693,9 +683,8 @@
                                         <div class="iconround d-flex align-items-center justify-content-center">
                                             <img src="assets/img/work-icon-12.png" alt="">
                                         </div>
-                                        <h3>Amazing Places</h3>
-                                        <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat Phasellus viverra nulla
-                                            ut metus varius laoreet.</p>
+                                        <h3>Get Service</h3>
+                                        
                                         <h2>03</h2>
                                     </div>
                                 </div>
@@ -749,7 +738,7 @@
                                     </div>
                                     <p><i class="fa fa-mobile"></i> 321 546 8764</p>
                                     <p class="mb-0"><i class="fas fa-envelope"></i> <a
-                                            href="https://truelysell-html.dreamguystech.com/cdn-cgi/l/email-protection"
+                                            href="https://Service Hut-html.dreamguystech.com/cdn-cgi/l/email-protection"
                                             class="__cf_email__"
                                             data-cfemail="dda9afa8b8b1a4aeb8b1b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a>
                                     </p>
@@ -946,7 +935,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="login-header">
-                        <h3>Login <span>Truelysell</span></h3>
+                        <h3>Login <span>Service Hut</span></h3>
                     </div>
                                          
              

@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Truelysell | Template</title>
+    <title>Service Hut</title>
 
     <link rel="shortcut icon" href="assets/img/favicon.png">
  
@@ -29,6 +29,7 @@
 
     <div class="main-wrapper">
 
+        
         <header class="header header-three">
             <nav class="navbar navbar-expand-lg header-nav">
                 <div class="navbar-header">
@@ -40,17 +41,20 @@
                         </span>
                     </a>
                     <a href="index.html" class="navbar-brand logo">
-                        <img src="assets/img/logo-three.png" class="img-fluid" alt="Logo">
+                        <style>
+                            #imagelogo{
+                                width: 100px !important;
+                            }
+                        </style>
+                        <img src="{% static 'asset2/Service_logo.png' %}" id="imagelogo" class="img-fluid" alt="Logo">
                     </a>
                     <a href="index.html" class="navbar-brand logo-small">
-                        <!-- <img src="assets/img/logo-icon-2.png" class="img-fluid" alt="Logo"> -->
-                    </a>
+                        <img src="{% static 'asset2/Service_logo.png' %}" class="img-fluid" alt="Logo">                    </a>
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
                         <a href="index.html" class="menu-logo">
-                            <img src="{% static 'asset2/img/logo-three.png' %}" alt="">
-                            <img src="" class="img-fluid" alt="Logo">
+                         
                         </a>
                         <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i
                                 class="fas fa-times"></i></a>
@@ -91,7 +95,7 @@
                     <li class="has-submenu" style="color: black;">
                             <a href="index-three.html#" style="color: black;">{{request.user.first_name}} <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu" style="color: black;">
-                                <li><a style="color: black;" href="/edit_profile">Edit Profile</a></li>
+                                <li><a style="color: black;" href="/profile/edit_student/">Edit Profile</a></li>
                                 <li><a style="color: black;" href="/logout">Logout</a></li>
                                 
                             </ul>
@@ -214,7 +218,7 @@
                                     </div>
                                     <p><i class="fa fa-mobile"></i> 321 546 8764</p>
                                     <p class="mb-0"><i class="fas fa-envelope"></i> <a
-                                            href="https://truelysell-html.dreamguystech.com/cdn-cgi/l/email-protection"
+                                            href="https://Service Hut-html.dreamguystech.com/cdn-cgi/l/email-protection"
                                             class="__cf_email__"
                                             data-cfemail="dda9afa8b8b1a4aeb8b1b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a>
                                     </p>
@@ -271,7 +275,7 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2022 <a href="index.html">Truelysell</a>. All rights
+                                    <p class="mb-0">&copy; 2022 <a href="index.html">Service Hut</a>. All rights
                                         reserved.</p>
                                 </div>
                             </div>
@@ -414,7 +418,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="login-header">
-                        <h3>Login <span>Truelysell</span></h3>
                     </div>
             
 

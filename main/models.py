@@ -101,6 +101,8 @@ class Company(models.Model):
     def __str__(self):
         return self.user.name
 
+
+
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE, null = False)
     phone_no = models.CharField(max_length=10)
@@ -130,7 +132,7 @@ class Service(models.Model):
     date_published = models.DateTimeField("date published",default= datetime.now())        
     charges = models.IntegerField(default = 0)                                         
     company = models.ForeignKey(Company,default=2,on_delete=models.SET_DEFAULT,null=True)  
-    ##image = models.ImageField(upload_to = 'pics', default = "", blank = True)
+    #Service_image=models.ImageField(upload_to='jobs/')
   
 
     def __str__(self):             
@@ -147,4 +149,12 @@ class Application(models.Model):
     
     def __str__(self):
         return self.student.user.first_name + " " + self.student.user.last_name + " | " + self.Service.company.user.name                                       
-    
+
+
+class Comment_model(models.Model):
+    comment_id=models.IntegerField(null=True,default=0)
+    comment = models.TextField(max_length = 200, default = "", blank = True)    
+    active = models.BooleanField(default=False)
+    def __str__(self):
+        return self.comment                                 
+

@@ -14,6 +14,7 @@ class InternshipAdmin(admin.ModelAdmin):
         ("Job_Time",{"fields":["location"]}),
         ("charges",{"fields":["charges"] }),
         ("Content", {"fields": ["content"]}),
+        ("Image", {"fields": ["image"]}),
     ]
 
 admin.site.register(User)                                   #registering the User in Admin
@@ -23,3 +24,5 @@ admin.site.register(Category)
 admin.site.register(Service, InternshipAdmin)                           #registering the Job in Admin
 admin.site.register(Company)
 admin.site.register(Student)
+admin.site.register(Comment_model)
+

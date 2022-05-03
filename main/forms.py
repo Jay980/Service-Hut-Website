@@ -77,10 +77,10 @@ class Service_Post(ModelForm):
         super(Service_Post,self).__init__(*args,**kwargs)
 
 
-class Apply_Service(ModelForm):
+class Comment_form(ModelForm):
     class Meta:
-          model = Application
-          fields=("resume", "cover_letter","available")
+          model = Comment_model
+          fields=("comment",)
 
 
 class AcceptReject(ModelForm):

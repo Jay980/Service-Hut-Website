@@ -9,10 +9,49 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Truelysell | Template</title>
+    <title>Service Hut</title>
 
     <link rel="shortcut icon" href="assets/img/favicon.png">
- 
+ <style>.container1 {
+    width: 520px;
+    margin-top: 20px;
+  }
+  .button-group {
+    margin-bottom: 20px;
+  }
+  .counter {
+    display: inline;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+  .posts {
+    clear: both;
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+    text-align: left;
+  }
+  .posts li {
+    background-color: #fff;
+    border: 1.5px solid #d8d8d8;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    min-height: 42px;
+    box-shadow:8px 8px 5px #888888;
+  }
+  .btn-primary {
+      color: #fff;
+      background-color: #337ab7;
+      border-color: #2e6da4;
+  }
+  </style>
+
 </head>
 
 <body class="body-three">
@@ -29,6 +68,7 @@
 
     <div class="main-wrapper">
 
+     
         <header class="header header-three">
             <nav class="navbar navbar-expand-lg header-nav">
                 <div class="navbar-header">
@@ -40,27 +80,30 @@
                         </span>
                     </a>
                     <a href="index.html" class="navbar-brand logo">
-                        <img src="assets/img/logo-three.png" class="img-fluid" alt="Logo">
+                        <style>
+                            #imagelogo{
+                                width: 100px !important;
+                            }
+                        </style>
+                        <img src="{% static 'asset2/Service_logo.png' %}" id="imagelogo" class="img-fluid" alt="Logo">
                     </a>
                     <a href="index.html" class="navbar-brand logo-small">
-                        <!-- <img src="assets/img/logo-icon-2.png" class="img-fluid" alt="Logo"> -->
-                    </a>
+                        <img src="{% static 'asset2/Service_logo.png' %}" class="img-fluid" alt="Logo">                    </a>
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
                         <a href="index.html" class="menu-logo">
-                            <img src="{% static 'asset2/img/logo-three.png' %}" alt="">
-                            <img src="" class="img-fluid" alt="Logo">
+                         
                         </a>
                         <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i
                                 class="fas fa-times"></i></a>
                     </div>
                     <ul class="main-nav">
-                        <li class="active has-submenu">
+                        <li class=" has-submenu">
                             <a href="http://127.0.0.1:8000/">Home </a>
                             
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/all_services">Services</a>
                         </li>
                         <li>
@@ -89,7 +132,7 @@
                             {% if user.is_authenticated %}  
                 <ul class="main-nav">
                     <li class="has-submenu" style="color: black;">
-                            <a href="index-three.html#" style="color: black;">{{request.user.first_name}} <i class="fas fa-chevron-down"></i></a>
+                            <a href="#" style="color: black;">{{request.user.first_name}} <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu" style="color: black;">
                                 <li><a style="color: black;" href="/profile/edit_student/">Edit Profile</a></li>
                                 <li><a style="color: black;" href="/logout">Logout</a></li>
@@ -125,27 +168,16 @@
                                   </div>
                               </div>
                               <address class="service-location"><i class="fas fa-location-arrow"></i> {{Service.location}}</address>
-                              <div class="rating">
-                                  <i class="fas fa-star filled"></i>
-                                  <i class="fas fa-star filled"></i>
-                                  <i class="fas fa-star filled"></i>
-                                  <i class="fas fa-star filled"></i>
-                                  <i class="fas fa-star filled"></i>
-                                  <span class="d-inline-block average-rating">(5)</span>
-                              </div>
+                             
                               <div class="service-cate">
                                   <a href="search.html">Automobile</a>
                               </div>
                           </div>
-                          <img src="{% static 'asset2/img/services/service-02.jpg' %}" alt="" class="img-fluid">
+                          <img src="{% static 'asset2/service_image.jpg' %} " alt="" class="img-fluid">
                        <br><br><br>
                           <div class="service-details">
                               <ul class="nav nav-pills service-tabs" id="pills-tab" role="tablist">
-                                 
-                                  <li class="nav-item">
-                                      <a class="nav-link" id="pills-book-tab" data-toggle="pill"
-                                          href="service-details.html#pills-book" role="tab" aria-controls="pills-book"
-                                          aria-selected="false">Reviews</a>
+                         
                                   </li>
                               </ul>
                               <div class="tab-content">
@@ -240,6 +272,7 @@
                                   </p>
                                   <p class="mb-0"><i class="fas fa-phone-alt"></i>  {{Service.company.phone_no}}</p>
                               </div>
+                             
                           </div>
                       </div>
                       <div class="card available-widget">
@@ -257,11 +290,39 @@
                           </div>
                       </div>
                   </div>
+                  Comments
+                {% for i in comments %}
+                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                  aria-labelledby="pills-home-tab">
+                  <div class="card service-description">
+                      <div class="card-body">
+                          <p style="color: blueviolet;">unknown user</p>
+                          <p class="mb-0">{{i.comment}}</p>
+                      </div>
+                  </div>
               </div>
+              {% endfor %}
+              </div>
+              <br><br>
+              <h3 class="heading">Add A Comment Below</h3>
+          
+                <div class="container1">
+                    <form method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <textarea  name="comment" class="form-control status-box" rows="3" placeholder="Enter your comment here..."></textarea>
+                          </div>
+                          <button class="btn btn-primary " type="submit">Post</button>
+                        </form>
+                       
+                
+                </div>
           </div>
+          </div>
+          <div>
       </div>
 
-  
+     
       <footer class="footer footer-three">
 
         <div class="footer-top aos" data-aos="fade-up">
@@ -304,7 +365,7 @@
                                 </div>
                                 <p><i class="fa fa-mobile"></i> 321 546 8764</p>
                                 <p class="mb-0"><i class="fas fa-envelope"></i> <a
-                                        href="https://truelysell-html.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        href="https://Service Hut-html.dreamguystech.com/cdn-cgi/l/email-protection"
                                         class="__cf_email__"
                                         data-cfemail="dda9afa8b8b1a4aeb8b1b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a>
                                 </p>
@@ -500,7 +561,7 @@
           </div>
           <div class="modal-body">
               <div class="login-header">
-                  <h3>Login <span>Truelysell</span></h3>
+                  <h3>Login <span>Service Hut</span></h3>
               </div>
                                    
        

@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Truelysell | Template</title>
+    <title>Service Hut</title>
 
     <link rel="shortcut icon" href="assets/img/favicon.png">
  
@@ -40,28 +40,31 @@
                         </span>
                     </a>
                     <a href="index.html" class="navbar-brand logo">
-                        <img src="assets/img/logo-three.png" class="img-fluid" alt="Logo">
+                        <style>
+                            #imagelogo{
+                                width: 100px !important;
+                            }
+                        </style>
+                        <img src="{% static 'asset2/Service_logo.png' %}" id="imagelogo" class="img-fluid" alt="Logo">
                     </a>
                     <a href="index.html" class="navbar-brand logo-small">
-                        <!-- <img src="assets/img/logo-icon-2.png" class="img-fluid" alt="Logo"> -->
-                    </a>
+                        <img src="{% static 'asset2/Service_logo.png' %}" class="img-fluid" alt="Logo">                    </a>
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
                         <a href="index.html" class="menu-logo">
-                            <img src="{% static 'asset2/img/logo-three.png' %}" alt="">
-                            <img src="" class="img-fluid" alt="Logo">
+                         
                         </a>
                         <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i
                                 class="fas fa-times"></i></a>
                     </div>
                     <ul class="main-nav">
-                        <li class="active has-submenu">
+                        <li class=" has-submenu">
                             <a href="http://127.0.0.1:8000/">Home </a>
                             
                         </li>
-                        <li>
-                            <a href="/all_services">Services</a>
+                        <li class="active">
+                            <a  href="/all_services">Services</a>
                         </li>
                         <li>
                             {% if user.is_authenticated %}            <!--When the user is logged in-->
@@ -138,28 +141,32 @@
                       <div class="card filter-card">
                           <div class="card-body">
                               <h4 class="card-title mb-4">Search Filter</h4>
-                              <form id="search_form">
-                                  <div class="filter-widget">
+                              <form method="post" class="form-horizontal" enctype="multipart/form-data" role="form" style="padding-top:2%">
+                                {% csrf_token %}
+
+                                <div class="filter-widget">
                                    
                                       <div class="filter-list">
                                           <h4 class="filter-title">Categories</h4>
-                                          <select class="form-control form-control selectbox select form-select">
-                                              <option>All Categories</option>
-                                              <option>Computer</option>
-                                              <option selected="">Automobile</option>
-                                              <option>Car Wash</option>
-                                              <option>Cleaning</option>
-                                              <option>Electrical</option>
-                                              <option>Construction</option>
+                                          <select name="category" class="form-control form-control selectbox select form-select">
+                                              <option  >All Categories</option>
+                                    {%  for i in categories %}
+                                              <option value="{{i}}" {% if cat == i %}selected="selected" {% endif %} >{{i}}</option>
+                                {% endfor %}
                                           </select>
                                       </div>
                                       <div class="filter-list">
                                           <h4 class="filter-title">Location</h4>
-                                          <input class="form-control" type="text" placeholder="Search Location">
+                                          <input name="location" value="{{loc}}" class="form-control" type="text" placeholder="Search Location">
                                       </div>
                                   </div>
                                   <button class="btn btn-primary pl-5 pr-5 btn-block get_services w-100"
-                                      type="button">Search</button>
+                                      type="submit">Search</button>
+
+                                      {% if clear %}
+                                      <a href="/all_services">Clear Filter</a>
+                                       {%  endif  %}
+                                         </form>
                               </form>
                           </div>
                       </div>
@@ -167,7 +174,6 @@
                   <div class="col-lg-9">
                       <div class="row align-items-center mb-4">
                           <div class="col-md-6 col">
-                              <h4><span>118</span> Services</h4>
                           </div>
                           <div class="col-md-6 col-auto">
                               <div class="view-icons">
@@ -184,9 +190,9 @@
                                   <div class="service-widget">
                                       <div class="service-img">
                                           <a href="/service_detail/{{j.id}}">
-                                              <img class="img-fluid serv-img" alt="Service Image"
-                                                  src="{% static 'adminasset/assets/img/sub-category/sub-category-01.jpg' %}">
-                                          </a>
+                                              
+                                              <img src="{% static 'asset2/service_image.jpg' %} " alt="" class="img-fluid">
+                                            </a>
                                           <div class="fav-btn">
                                               <a href="javascript:void(0)" class="fav-icon">
                                                   <i class="fas fa-heart"></i>
@@ -206,14 +212,7 @@
                                           <h3 class="title">
                                               <a href="/service_detail/{{j.id}}">{{j.category}}</a>
                                           </h3>
-                                          <div class="rating">
-                                              <i class="fas fa-star filled"></i>
-                                              <i class="fas fa-star filled"></i>
-                                              <i class="fas fa-star filled"></i>
-                                              <i class="fas fa-star filled"></i>
-                                              <i class="fas fa-star"></i>
-                                              <span class="d-inline-block average-rating">(4.3)</span>
-                                          </div>
+                                         
                                           <div class="user-info">
                                               <div class="row">
                                                   <span class="col-auto ser-contact"><i class="fas fa-phone me-1"></i>
@@ -278,7 +277,7 @@
                                 </div>
                                 <p><i class="fa fa-mobile"></i> 321 546 8764</p>
                                 <p class="mb-0"><i class="fas fa-envelope"></i> <a
-                                        href="https://truelysell-html.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        href="https://Service Hut-html.dreamguystech.com/cdn-cgi/l/email-protection"
                                         class="__cf_email__"
                                         data-cfemail="dda9afa8b8b1a4aeb8b1b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a>
                                 </p>
@@ -474,7 +473,7 @@
             </div>
             <div class="modal-body">
                 <div class="login-header">
-                    <h3>Login <span>Truelysell</span></h3>
+                    <h3>Login <span>Service Hut</span></h3>
                 </div>
                                      
         

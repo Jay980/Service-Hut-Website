@@ -3,6 +3,7 @@
 #or a 404 error, or an XML document, or an image, etc. Example: You use view to create web pages, 
 #note that you need to associate a view to a URL to see it as a web page.
 
+from unicodedata import category
 from django.views import View
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
@@ -104,7 +105,7 @@ class register_as_student(View):
     ''' This view is for registering the student '''
     form_class=StudentSignUpForm
     initial={'key':'value'}
-    template_name="student/Student-Signup.html"
+    template_name="Users/homepage.html"
 
     def get(self,request):
         form=self.form_class(initial=self.initial)
@@ -142,11 +143,7 @@ class register_as_student(View):
             return HttpResponse('Please confirm your email address to complete the registration') 
             
         else:
-            for msg in form.error_messages:
-                messages.error(request, f"{msg}: {form.error_messages[msg]}")
-
-            form=self.form_class(initial=self.initial)
-            return render(request ,self.template_name,{'form':form})
+            return redirect("main:homepage")
 
 
 def activate(request, uidb64, token):
@@ -321,6 +318,9 @@ class edit_company_profile(View):
         if form.is_valid():
             try :
                 company = Company.objects.get(user = request.user)
+                phone=request.POST.get('phone_no')
+                print(phone)
+
             except Company.DoesNotExist:
                 if request.user.is_normal:
                     return redirect("main:edit_student_profile")
@@ -328,6 +328,7 @@ class edit_company_profile(View):
 
             city = form.cleaned_data.get('head_office_location')
             company.head_office_location = city
+            company.phone_no=phone
             company.save()
             user=form.save()
             
@@ -360,6 +361,8 @@ class post_service(View):
     def post(self, request):
         form = Service_Post(request.user, request.POST)
         print("dsjferfbkjsdf----------------------------------------------------")
+        #imageurl= request.FILES['Service_image']
+       # print(imageurl)
         if form.is_valid():
             job_profile = form.save(commit=False)
             company = Company.objects.get(user = request.user)  
@@ -634,27 +637,17 @@ def service_detail(request,internship_id):
     service = Service.objects.get(pk = internship_id)
     applicant = Student.objects.get(user = request.user)
     if request.method == 'POST':
-        form = Apply_Service(request.POST, request.FILES or None)
-        if form.is_valid():
-            apps = Application.objects.filter(student__user = request.user.id, Service = internship_id).count()
-            if(apps == 0): 
-                application = form.save(commit = False)
-                application.student = Student.objects.get(user = request.user)
-                application.Service = Service.objects.get(pk = internship_id)
-                application.save()
+        form = Comment_form(request.POST, request.FILES or None)
+        print("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
+        comment=form.save(commit=False)
+        comment.comment_id=internship_id
+        comment.save()
 
-                if "resume" in request.FILES:
-                    applicant.resume = request.FILES['resume']
-                    applicant.save()
 
-                messages.success(request,"Successfully applied for the Service")
-                return redirect("main:student")
-            else : 
-                messages.error(request,"You have already applied for this role")
-                return redirect("main:student")
-
-    form = Apply_Service()
-    return render(request,"student/service_details.html",{'Service' : service, 'student' : applicant, "form" : form})
+    form = Comment_form()
+    service = get_object_or_404(Service, pk=internship_id)
+    comments = Comment_model.objects.filter(comment_id=internship_id)
+    return render(request,"student/service_details.html",{'Service' : service, 'student' : applicant,'comments':comments,'form':form})
 
 
 class filter_internship(View):
@@ -670,15 +663,18 @@ class filter_internship(View):
 
 
 class all_services(View):
+    categories=['Computer','Automobile','Car Wash','Cleaning','Construction','Plumbing']
     ''' View to show all the internships posted on Internpedia '''
     def get(self,request):
         print("---------Get------------------")
         if request.user.is_anonymous is False and request.user.is_company:
             messages.error(request, "Access Denied")
             return redirect("main:company")
+        categories=['Computer','Automobile','Car Wash','Cleaning','Construction','Plumbing']
+
         return render(request=request,
                       template_name="student/internship_list.html",
-                      context={"jobs":Service.objects.all().order_by('-date_published')},
+                      context={"jobs":Service.objects.all().order_by('-date_published'),'categories':categories},
                     )  
     def post(self,request):
         print("---------Post------------------")
@@ -688,17 +684,25 @@ class all_services(View):
             return redirect("main:company")
         result=Service.objects.all()
         cat= request.POST.get('category')
+        loc= request.POST.get('location')
         if(cat is not None):
             print('==================================================')
             print(cat)
             print('==================================================') 
-            result=Service.objects.filter(category__category_name=cat)
-        if cat is None:
+            result=result.filter(category__category_name=cat)
+            print(result)
+            print(loc)
+        if loc == " ":
+            result=result.filter(location__location_name=loc)
+            print(result)
+        if cat and loc is None:
             result=Service.objects.all()
         clear=True
+        categories=['Computer','Automobile','Car Wash','Cleaning','Construction','Plumbing']
+
         return render(request=request,
                       template_name="student/internship_list.html",
-                      context={"jobs":result,'clear':clear},
+                      context={"jobs":result,'clear':clear,'loc':loc,'cat':cat,'categories':categories},
                     ) 
 
 
